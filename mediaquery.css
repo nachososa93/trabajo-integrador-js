@@ -1,0 +1,265 @@
+:root {
+  --girsclaro: #e0e0e0;
+  --amarillo: #e9f679;
+  --amarilloepa: #d9df1d;
+  --verdeepa: #3fa743;
+  --grisoscuro: #3f3e3e;
+  --verdeclaro: #9dca2c;
+  --tierra: #dda77b;
+  --tierra2: #dcbf85;
+  --titulos: "CooperHewitt-Heavy", arial;
+  --info: "HK Grotesk", sans-serif;
+}
+@media (max-width: 2200px) {
+  .tituloshero {
+    display: none;
+  }
+
+}
+@media (max-width: 2000px) {
+
+}
+@media (max-width: 1700px) {
+
+ 
+}
+@media (max-width: 1400px) {
+  .titulointegrantes h2,
+  .contacto h2,
+  .venta h2 {
+    font-size: 30px;
+  }
+}
+@media (max-width: 1200px) {
+  .datoscontacto a,
+  .datosventas a {
+    font-size: 15px;
+  }
+  .datoscontacto a img {
+    width: 40px;
+  }
+  .datosventas a img {
+    width: 60px;
+  }
+  .contactomain {
+    width: 100%;
+    padding: 30px 50px;
+  }
+}
+@media (max-width: 1100px) {
+}
+@media (max-width: 900px) {
+  .ulnav a,
+  nav a {
+    font-size: 17px;
+  }
+  nav {
+    padding: 0px 20px;
+  }
+  footer p {
+    font-size: 15px;
+  }
+  footer p a img {
+    width: 70px;
+    height: 15px;
+  }
+}
+@media (max-width: 800px) {
+  .integrantes h3 {
+    font-size: 15px;
+  }
+  .contactnav,
+  .ulnav a {
+    font-size: 15px;
+  }
+  .contactnav {
+    padding: 5px 20px;
+  }
+  .ulnav {
+    gap: 15px;
+  }
+
+  .integrantes img {
+    width: 100px;
+    height: 100px;
+  }
+  .integrantesgrupo ul {
+    gap: 30px;
+  }
+  .titulointegrantes h2,
+  .contacto h2,
+  .venta h2 {
+    font-size: 25px;
+  }
+  .img-medicion,
+  .img-barrenos {
+    width: 50%;
+  }
+  .datoscontacto, .datosventas{
+    font-size: 10px;
+  }
+  .datoscontacto a img {
+    width: 35px;
+  }
+  .datosventas a img{
+    width: 45px;
+  }
+ 
+ 
+}
+@media (max-width: 700px) {
+ 
+.contactomain{
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.contacto{
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.venta{
+  width: 100%;
+  justify-content: flex-start;
+  gap: 50px;
+}
+.datoscontacto{
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.datoscontacto a, .datosventas a {
+ font-size: 12px;
+}
+}
+  
+
+@media (max-width: 650px) {
+ 
+}
+@media (max-width: 600px) {
+  .ulnav {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    top: 70px;
+    right: 0px;
+    padding: 0px 30px;
+    padding-top: 50px;
+    justify-content: start;
+    align-items: center;
+    gap: 50px;
+    height: 100vh;
+    background: rgba(63, 167, 67, 0.37);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.1px);
+    -webkit-backdrop-filter: blur(3.1px);
+  }
+  nav{
+    height: 70px;
+  }
+ #logoepa{
+  height: 60px;
+  width: 60px;
+ }
+ .hero{
+  padding-top: 70px;
+ }
+  
+  .ulnav li a {
+    color:#000000;
+    font-size: 20px;
+    
+  }
+  #menulabel {
+    display: flex;
+  }
+  #menulabel img {
+    width: 50px;
+  }
+  
+  #menu:checked + .ulnav{
+    display: flex;
+    animation: navresponsive 1s ease-in-out 0s 1 forwards;
+  }
+
+  @keyframes navresponsive {
+    0% {
+      right: -200px;
+    }
+    100% {
+      right: 0px;
+    }
+  }
+  
+  .contactnav {
+    display: none;
+  } 
+  #licontacto {
+    display: flex;
+  }
+  
+  .datoscontacto, .datosventas{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .datoscontacto a, .datosventas a {
+    width: 100%;
+    justify-content: start;
+  }
+  .integrantesgrupo ul {
+    flex-wrap: wrap;
+  }
+  .integrantes img{
+    width:100px;
+  }
+  .integrantes{
+    width: 100%;
+  }
+  }
+  
+ 
+  @media (max-width: 500px) {
+    .equipo{
+      width: 100%;
+    }
+
+  }
+@media (max-width: 400px) {
+
+  .equipo-texto{
+    font-size: 15px;
+    padding-top: 0px;
+  }
+
+  .titulointegrantes h2,
+  .contacto h2,
+  .venta h2 {
+    font-size: 15px;
+  }
+   .datoscontacto a img, .datosventas a img{
+    width: 30px;
+   }
+   .datoscontacto, .datosventas{
+    font-size: 10px;
+    gap: 20px;
+   }
+   .datoscontacto a, .datosventas a {
+    gap: 10px;
+  
+   }
+   .contactomain{
+    padding: 20px;
+   }
+   footer{
+    border-top: 1px solid var(--grisoscuro);
+    width: 100%;
+    padding: 0px;
+    margin-top: 100px;
+   }
+}
