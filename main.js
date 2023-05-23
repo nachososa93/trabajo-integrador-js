@@ -146,22 +146,21 @@ const imagenConteiner = document.querySelector(".imagenes__producto")
 //   });
 // }
 const busquedaImg = (img)=>{
-    // const img = productos.imagen
-    imagen.forEach(element => {
-        return `<img src="${element}" alt="" />`
-    });
-
+  
+ 
 }
 const cardProducto=(productos)=>{
-const {nombre, contiene,precio} = productos
-// const img = productos.imagen
+const {nombre,imagen,contiene,precio} = productos
+
 
 
 return`
 <div class="card__producto__solo">
 <h2>${nombre}</h2>
 <div class="imagenes__producto">
-${busquedaImg(img)}
+${imagen.map(e => {
+    return `<img src=${e} alt="" />`
+})}
 </div>
 <h3 class="contiene__producto">${contiene}</h3>
 <h3 class="precio__producto"> Precio:$${precio}</h3>
