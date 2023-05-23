@@ -203,7 +203,9 @@ width: 0%;
   font-size: 35px;
   font-family: var(--titulos);
 }
-
+.imagenes__producto img{
+  width: 50px;
+}
 
 .contactomain {
   width: 80%;
