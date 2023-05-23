@@ -159,7 +159,7 @@ return`
 <h2>${nombre}</h2>
 <div class="imagenes__producto">
 ${imagen.map(e => {
-    return `<img src=${e} alt="" />`
+    return `<img src="${e}" alt="" />`
 })}
 </div>
 <h3 class="contiene__producto">${contiene}</h3>
