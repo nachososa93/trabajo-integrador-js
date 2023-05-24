@@ -137,19 +137,16 @@ const productos = [
 const verMasFuncion =(cantidad)=>{
     let arrayVerMas = []
     for (let i = 0; i < productos.length; i+= cantidad) {
-        arrayVerMas.push (productos.slice (i, i + cantidad))
-        
+        arrayVerMas.push(productos.slice(i, i + cantidad))
         
     }
     return arrayVerMas
-}
+};
 
 
-const appState ={
-    productos:verMasFuncion(5),
-    inicioDeBucle : 0,
+const appState = {
+    listaProductos:verMasFuncion(5),
+    indiceDeBucle : 0,
     limiteDeProductos : verMasFuncion(5).length,
-    filtroEstado: null
-
-
+    filtroEstado: null,
 }

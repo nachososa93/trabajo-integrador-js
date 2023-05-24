@@ -6,6 +6,8 @@
 
 
 const cardProductosConteiner = document.querySelector(".cards__productos")
+const buttonVerMas= document.querySelector(".buttons__vermas")
+
 
 const cardProducto=(productos)=>{
 const {nombre,imagen,contiene,precio} = productos
@@ -25,18 +27,24 @@ ${imagen.map(e => {
 }
 
 const renderProductos = ()=>{
+    let {listaProductos} = appState
 cardProductosConteiner.innerHTML= productos.map(cardProducto).join("")
 }
 
-const renderCarrito=()=>{
+// const renderCarrito=()=>{
 
+// }
+
+const verMasProductos=()=>{
+appState.indiceDeBucle += 1
+let {listaProductos, indiceDeBucle} = appState
+renderProductos(listaProductos[indiceDeBucle])
 }
 
-
 const init =()=> {
-renderProductos()
-document.addEventListener("DOMContentLoaded", renderCarrito)
-
+renderProductos(appState.listaProductos[appState.indiceDeBucle])
+// document.addEventListener("DOMContentLoaded", renderCarrito)
+buttonVerMas.addEventListener("click",verMasProductos)
 
 
 
