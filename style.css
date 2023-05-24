@@ -33,11 +33,10 @@ body {
 }
 header {
   width: 100%;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  
 }
 nav {
   width: 100%;
@@ -45,14 +44,13 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 80px;
-  position:fixed;
+  padding: 0px 30px;
+  position: fixed;
   top: 0px;
   left: 0px;
-z-index: 1;
-background-color: var(--girsclaro);
+  z-index: 1;
+  background-color: var(--girsclaro);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23dda77b' fill-opacity='0.29' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-
 }
 
 #logoepa {
@@ -61,16 +59,16 @@ background-color: var(--girsclaro);
 }
 .ulnav {
   display: flex;
-  gap: 100px;
+  gap: 50px;
 }
-.contactnav{
+.contactnav {
   background-color: #3fa743;
   border: solid 3px var(--verdeepa);
   border-radius: 10px;
   display: flex;
   padding: 10px 30px;
 }
-.contactnav:hover{
+.contactnav:hover {
   transition: 1s;
   background-color: var(--amarilloepa);
   border: 3px solid var(--verdeepa);
@@ -82,7 +80,7 @@ nav a {
   font-weight: 600;
   position: relative;
 }
-.ulnav li a::before{
+.ulnav li a::before {
   content: "";
   width: 0%;
   height: 2px;
@@ -92,11 +90,10 @@ nav a {
   bottom: -2px;
   transition: 1s;
   opacity: 0;
-
 }
 
-.ulnav li a::after{
-width: 0%;
+.ulnav li a::after {
+  width: 0%;
   content: "";
   height: 2px;
   position: absolute;
@@ -104,19 +101,19 @@ width: 0%;
   right: 0px;
   opacity: 0;
   border-bottom: var(--verdeepa) 2px solid;
-  transition: 1s;}
+  transition: 1s;
+}
 
-.ulnav li a:hover:after, 
+.ulnav li a:hover:after,
 .ulnav li a:hover:before {
   width: 100%;
   opacity: 1;
 }
 
-
-#menulabel, #menu{
+#menulabel,
+#menu {
   display: none;
 }
-
 
 .hero {
   width: 100%;
@@ -145,7 +142,6 @@ width: 0%;
   font-size: 38px;
   color: var(--girsclaro);
   -webkit-text-stroke: 2px black;
-
 }
 .equipo {
   display: flex;
@@ -203,8 +199,69 @@ width: 0%;
   font-size: 35px;
   font-family: var(--titulos);
 }
-.imagenes__producto img{
+.cards__productos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.productos__main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.carrito__compras img {
+  width: 30px;
+}
+.carrito__compras {
+  position: relative;
+}
+.cantidad__carrito__conteiner {
+  position: absolute;
+  top: 0px;
+  right: -2px;
+  border: #3fa743 solid 2px;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  font-size: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #3fa743;
+}
+
+.filter__productos {
+  display: flex;
+  gap: 30px;
+}
+.card__producto__solo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.imagenes__producto {
   width: 50px;
+  height: 100px;
+  margin: 0px;
+  position: relative;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-content: center;
+}
+.imagenes__producto img {
+  width: auto;
+  height: 100px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border-radius: 5px;
 }
 
 .contactomain {
@@ -298,8 +355,41 @@ footer p {
   font-family: var(--info);
   font-weight: 500;
 }
-footer{
+footer {
   padding-top: 55px;
 }
+.form__login__conteiner {
+  padding: 30px;
+}
+.form__login,
+.form__registro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+.form__login input,
+.form__registro input {
+  border-radius: 5px;
+  border: #3fa743 1px solid;
+}
+.buttons__form {
+  gap: 10px;
+  display: flex;
+}
+.buttons__form button {
+  font-size: 10px;
 
-
+  border-radius: 5px;
+  padding: 5px;
+  border: #3fa743 1px solid;
+}
+.button__add{
+  font-size: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  border: var(--grisoscuro) 1px solid;
+  background-color:var(--tierra);
+  color:var(--grisoscuro)
+}
