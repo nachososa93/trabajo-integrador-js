@@ -138,11 +138,20 @@
   
 
 @media (max-width: 650px) {
- 
+ header{
+  height: 70px;
+ }
+ .carrito__compras__conteiner{
+  top: 70px;
+ }
 }
 @media (max-width: 600px) {
   .ulnav {
     display: none;
+    
+  }
+  .ulnav__active{
+    display: flex;
     position: absolute;
     flex-direction: column;
     top: 70px;
@@ -152,11 +161,12 @@
     justify-content: start;
     align-items: center;
     gap: 50px;
-    height: 100vh;
+    height: 200vh;
     background: rgba(63, 167, 67, 0.37);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.1px);
     -webkit-backdrop-filter: blur(3.1px);
+
   }
   nav{
     height: 70px;
@@ -165,9 +175,7 @@
   height: 60px;
   width: 60px;
  }
- .hero{
-  padding-top: 70px;
- }
+
   
   .ulnav li a {
     color:#000000;
@@ -178,13 +186,9 @@
     display: flex;
   }
   #menulabel img {
-    width: 50px;
+    width: 40px;
   }
   
-  #menu:checked + .ulnav{
-    display: flex;
-    animation: navresponsive 1s ease-in-out 0s 1 forwards;
-  }
 
   @keyframes navresponsive {
     0% {

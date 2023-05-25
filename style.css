@@ -42,7 +42,7 @@ nav {
   width: 100%;
   height: 100px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 0px 30px;
   position: fixed;
@@ -114,10 +114,13 @@ nav a {
 #menu {
   display: none;
 }
+.show{
+  display: flex;
+}
 
 .hero {
   width: 100%;
-  padding-top: 100px;
+ 
 }
 .hero img {
   width: 100%;
@@ -213,11 +216,31 @@ nav a {
   flex-direction: column;
 }
 
-.carrito__compras img {
+.carrito__compras__imagen img {
   width: 30px;
 }
-.carrito__compras {
+.carrito__compras__imagen {
   position: relative;
+}
+.carrito__compras__conteiner{
+  display: none;
+  position: absolute;
+  flex-direction: column;
+  top: 100px;
+  right: 0px;
+  padding: 30px;
+  padding-top: 50px;
+  justify-content: start;
+  align-items: center;
+  gap: 40px;
+  height: 200vh;
+  background: rgba(63, 167, 67, 0.37);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.1px);
+  -webkit-backdrop-filter: blur(3.1px);
+}
+.carrito__compras__flex{
+display: flex;
 }
 .cantidad__carrito__conteiner {
   position: absolute;
@@ -395,4 +418,7 @@ footer {
 }
 .hidden{
   visibility: hidden;
+}
+.button__activo{
+  background-color: red;
 }

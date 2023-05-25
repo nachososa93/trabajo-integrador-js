@@ -2,7 +2,7 @@ const productos = [
     {   nombre : "Barreno estandar",
         id : 1,
         contiene: "Barreno estandar",
-        categoria :"barrenos y soportes",
+        categoria :"Barrenos y soportes",
         precio: "21.000",
         imagen: ["./img-productos/barreno estandar.jpg", "./img-productos/barreno zoom 1.jpg", "./img-productos/barreno zoom 2.jpg"]
 
@@ -11,7 +11,7 @@ const productos = [
     {   nombre : "Barreno reforzado",
     id : 2,
     contiene: "Barreno reforzado",
-    categoria :"barrenos y soportes",
+    categoria :"Barrenos y soportes",
     precio: "25.000",
         imagen: ["./img-productos/barreno para golpear.jpg", "./img-productos/barreno zoom 1.jpg", "./img-productos/barreno zoom 2.jpg", "./img-productos/mango barreno reforzado.jpg"]
     },
@@ -19,7 +19,7 @@ const productos = [
     {   nombre : "Barreno estandar y extensor",
     id : 3,
     contiene: "Barreno estandar + extensor",
-    categoria :"barrenos y soportes",
+    categoria :"Barrenos y soportes",
     precio: "35.000",
     imagen: ["./img-productos/barreno estandar.jpg", "./img-productos/barreno zoom 1.jpg", "./img-productos/barreno zoom 2.jpg","./img-productos/EXTENSOR BARRENO.jpg", "./img-productos/extensor barreno zoom.jpg", "./img-productos/extensor barreno zoom 2.jpg" ]
     },
@@ -27,7 +27,7 @@ const productos = [
     {   nombre : "Barreno reforzado y extensor",
     id : 4,
     contiene: "Barreno reforzado + extensor",
-    categoria :"barrenos y soportes",
+    categoria :"Barrenos y soportes",
     precio: "21.000",
     imagen: ["./img-productos/barreno para golpear.jpg", "./img-productos/barreno zoom 1.jpg", "./img-productos/barreno zoom 2.jpg","./img-productos/EXTENSOR BARRENO.jpg", "./img-productos/extensor barreno zoom.jpg", "./img-productos/extensor barreno zoom 2.jpg", "./img-productos/mango barreno reforzado.jpg" ]
     },
@@ -35,7 +35,7 @@ const productos = [
     {   nombre : "Extensor para barrenos",
     id : 5,
     contiene: "Extensor",
-    categoria :"barrenos y soportes",
+    categoria :"Barrenos y soportes",
     precio: "12.000",
     imagen: ["./img-productos/EXTENSOR BARRENO.jpg", "./img-productos/extensor barreno zoom.jpg", "./img-productos/extensor barreno zoom 2.jpg" ]
     },
@@ -43,7 +43,7 @@ const productos = [
     {   nombre : "Kit de agronomo",
     id : 6,
     contiene: "Barreno reforzado + extensor + termometro + cucharin",
-    categoria :"barrenos y soportes",
+    categoria :"Barrenos y soportes",
     precio: "35.000",
     imagen: ["./img-productos/barreno para golpear.jpg","./img-productos/barreno zoom 1.jpg","./img-productos/barreno zoom 2.jpg","./img-productos/EXTENSOR BARRENO.jpg", "./img-productos/extensor barreno zoom.jpg", "./img-productos/extensor barreno zoom 2.jpg", "./img-productos/mango barreno reforzado.jpg","./img-productos/termometro.jpg","./img-productos/termometro 3.jpg","./img-productos/termometro 4.jpg","./img-productos/cucharin gris solo.png","./img-productos/cucharin gris solo 4.png"  ]
     },
@@ -51,7 +51,7 @@ const productos = [
     {   nombre : "Soporte tarjeta hidrosensibles",
     id : 7,
     contiene: "Soporte + 2 tarjeta hidrosensible",
-    categoria :"barrenos y soportes",
+    categoria :"Barrenos y soportes",
     precio: "9000",
     imagen: ["./img-productos/tarjeta hidrosensible  (1).jpeg", "./img-productos/tarjeta hidrosensible  (2).jpeg","./img-productos/tarjeta hidrosensible  (3).jpeg","./img-productos/tarjeta hidrosensible  (4).jpeg","./img-productos/tarjeta hidrosensible  (5).jpeg","./img-productos/tarjeta hidrosensible  (8).jpeg","./img-productos/tarjeta hidrosensible  (7).jpeg","./img-productos/tarjeta hidrosensible  (8).jpeg","./img-productos/tarjeta hidrosensible  (9).jpeg",]
     },
@@ -138,7 +138,6 @@ const verMasFuncion =(cantidad)=>{
     let arrayVerMas = []
     for (let i = 0; i < productos.length; i+= cantidad) {
         arrayVerMas.push(productos.slice(i, i + cantidad))
-        
     }
     return arrayVerMas
 };
@@ -148,5 +147,5 @@ const appState = {
     listaProductos:verMasFuncion(5),
     indiceDeBucle : 0,
     limiteDeProductos : verMasFuncion(5).length,
-    
+    estadoFiltro : null
 }
