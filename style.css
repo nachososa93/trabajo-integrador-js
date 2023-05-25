@@ -396,13 +396,3 @@ footer {
 .hidden{
   visibility: hidden;
 }
-.categoria{
-  padding: 10px;
-  background-color:grey;
-  font: 10px;
-border: 2px solid var(--amarillo);
-color: var(--grisoscuro);
-border-radius: 10px;}
-.button__activo{
-  background-color: #d9df1d;
-}

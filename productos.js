@@ -148,5 +148,5 @@ const appState = {
     listaProductos:verMasFuncion(5),
     indiceDeBucle : 0,
     limiteDeProductos : verMasFuncion(5).length,
-    filtroEstado: null,
+    
 }

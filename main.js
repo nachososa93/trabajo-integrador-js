@@ -51,21 +51,30 @@ const buttonIncativo =(e)=>{
 e.classList.contains("categoria") && !e.classList.contains("button__activo")
 }
 
-const cambioEstado=(e)=>{
-appState.filtroEstado = e.dataset.categoria
-}
 
-const cambioEstilosButtonActivado =()=>{
+
+const cambioEstilosButtonActivado =(categoriaSeleccionada)=>{
     const buttonList = [...buttonFilter]
+    buttonList.forEach((button)=>{
+        if(button.dataset.categoria !== categoriaSeleccionada)
+        {button.classList.remove("button__activo")
+        return}
+        button.classList.add("button__activo")
+
+    })
 }
+const cambioEstado=(button)=>{
+    appState.filtroEstado = button.dataset.categoria
+    cambioEstilosButtonActivado(appState.filtroEstado)
+    }
 const aplicarFiltro =({target})=>{
     if(!buttonIncativo(target)){
          return
     }
 // cambiar el estado del filro 
-filtroActivo()
-// si esta activo renderizo producots filtradas
 
+// si esta activo renderizo producots filtradas
+cambioEstilosButtonActivado(target)
 // si no hay activo renderizo todo
 
 }
