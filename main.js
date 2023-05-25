@@ -7,6 +7,9 @@
 
 const cardProductosConteiner = document.querySelector(".cards__productos")
 const buttonVerMas= document.querySelector(".buttons__vermas")
+const contenedorCategoria = document.querySelector(".filter__productos")
+const buttonFilter = document.querySelectorAll(".categoria")
+
 
 
 const cardProducto=(productos)=>{
@@ -26,25 +29,51 @@ ${imagen.map(e => {
 `
 }
 
-const renderProductos = ()=>{
-    let {listaProductos} = appState
-cardProductosConteiner.innerHTML= productos.map(cardProducto).join("")
+const renderProductos = (e)=>{
+    
+cardProductosConteiner.innerHTML+= e.map(cardProducto).join("")
+}
+const ultimoIndiceVerMas = ()=>{
+    return appState.indiceDeBucle === appState.limiteDeProductos - 1
 }
 
-// const renderCarrito=()=>{
-
-// }
 
 const verMasProductos=()=>{
-appState.indiceDeBucle += 1
-let {listaProductos, indiceDeBucle} = appState
-renderProductos(listaProductos[indiceDeBucle])
+    appState.indiceDeBucle += 1
+    let {listaProductos, indiceDeBucle} = appState
+        renderProductos(listaProductos[indiceDeBucle])
+            if(ultimoIndiceVerMas()){
+                buttonVerMas.classList.add("hidden")
+    }
 }
 
+const buttonIncativo =(e)=>{
+e.classList.contains("categoria") && !e.classList.contains("button__activo")
+}
+
+const cambioEstado=(e)=>{
+appState.filtroEstado = e.dataset.categoria
+}
+
+const cambioEstilosButtonActivado =()=>{
+    const buttonList = [...buttonFilter]
+}
+const aplicarFiltro =({target})=>{
+    if(!buttonIncativo(target)){
+         return
+    }
+// cambiar el estado del filro 
+filtroActivo()
+// si esta activo renderizo producots filtradas
+
+// si no hay activo renderizo todo
+
+}
 const init =()=> {
 renderProductos(appState.listaProductos[appState.indiceDeBucle])
 // document.addEventListener("DOMContentLoaded", renderCarrito)
 buttonVerMas.addEventListener("click",verMasProductos)
+contenedorCategoria.addEventListener("click", aplicarFiltro)
 
 
 
