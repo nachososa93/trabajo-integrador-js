@@ -22,29 +22,57 @@
           src="/img/img-removebg-preview (4).png"
           alt="logo epa"
           id="logoepa"
+          data-href="index.html"
         />
-        <label for="menu" id="menulabel"
-          ><img src="./img/menu.png" alt="" id="menu-img"
-        /></label>
-        <input type="checkbox" name="menu" id="menu" />
-        <ul class="ulnav">
+     
+    
+        <ul class="ulnav ulnav__hidden">
           <li><a href="#header">Home</a></li>
           <li><a href="#equipo">Sobre Nosotros</a></li>
           <li><a href="#productos">Productos</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
-        <div class="login">
-          <button class="ingreso">Ingresar</button>
-          <button class="crear__cuenta">Crear Cuenta</button>
-        </div>
-        <div class="carrito__compras">
-          <img src="./img/carrito-de-compras.png" alt="Carrito de compras" />
-          <div class="cantidad__carrito__conteiner">0</div>
-       
-        </div>
+<div class="login">
+  <button class="ingreso__button" data-href="login.html">Ingresar</button>
+  <button class="crear__cuenta__button" data-href="register.html">Crear Cuenta</button>
+</div>
+<div class="carrito__compras__imagen">
+<img src="./img/carrito-de-compras.png" alt="Carrito de compras">
+<div class="cantidad__carrito__conteiner" >0</div>
+
+</div>
+<label for="menu" id="menulabel"
+><img src="./img/menu.png" alt="" id="menu-img"
+/></label>
+<div class="carrito__compras__conteiner"> 
+  <h3>Tus carrito</h3> 
+
+  <div class="card__carrito"> 
+         
+                  <div class="item__carrito__info"> 
+                          <h3 class="titulo__item__carrito"></h3> 
+                          <span class="precio__item__carrito"></span> 
+                  </div> 
+                  <div class=""> 
+                          <button class="button__cantidad__carrito subir" data-id="ID">-</button> 
+                          <span class="cantidad">0</span> 
+                          <button class="button__cantidad__carrito bajar" data-id="ID">+</button> 
+                  </div> 
+          
+  </div> 
+
+  <div class="total__carrito__conteiner"> 
+          <p>Total:</p> 
+          <p class="total__carrito"></p>
+  </div> 
+  <button class="button__comprar">Comprar</button> 
+  <button class="button__vaciar">Eliminar carrito</button> 
+</div> 
+
+
+
       </nav>
     </header>
-
     <section class="form__login__conteiner">
       <form class="form__login">
         <label for="email__input"> Ingrese su Email</label>
@@ -52,11 +80,13 @@
         <label for="contraseña__input">Ingrese su contraseña</label>
         <input type="password" class="contraseña__input" id="contraseña__input"/>
         <div class="buttons__form">
-          <button>Iniciar seccion</button> 
-          <button>¿Olvidaste tu contraseña?</button>
+          <button >Iniciar sesion</button> 
+          <button >¿Olvidaste tu contraseña?</button>
         </div>
       </form>
       <div class="alert"></div>
     </section>
+<script src="login.js"></script>
+
   </body>
 </html>

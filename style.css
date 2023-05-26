@@ -55,11 +55,20 @@ nav {
 
 #logoepa {
   width: 70px;
+  cursor: pointer;
   height: 70px;
 }
 .ulnav {
   display: flex;
   gap: 50px;
+}
+.ulnav__hidden{
+  display: none
+}
+.mensaje__carrito__vacio{
+ font-size: 15px;
+ font-weight: 800;
+ color: #3f3e3e;
 }
 .contactnav {
   background-color: #3fa743;
@@ -218,9 +227,11 @@ nav a {
 
 .carrito__compras__imagen img {
   width: 30px;
+  
 }
 .carrito__compras__imagen {
   position: relative;
+  cursor: pointer;
 }
 .carrito__compras__conteiner{
   display: none;
@@ -234,10 +245,13 @@ nav a {
   align-items: center;
   gap: 40px;
   height: 200vh;
-  background: rgba(63, 167, 67, 0.37);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(3.1px);
-  -webkit-backdrop-filter: blur(3.1px);
+/* From https://css.glass */
+background: rgba(255, 255, 255, 0.56);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8.8px);
+-webkit-backdrop-filter: blur(8.8px);
+border: 1px solid rgb(7, 6, 6);
 }
 .carrito__compras__flex{
 display: flex;
