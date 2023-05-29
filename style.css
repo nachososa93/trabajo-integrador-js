@@ -193,7 +193,9 @@ nav a {
   flex-direction: column;
   gap: 10px;
 }
-
+.titulo__item__carrito{
+  width: 100px;
+}
 .integrantes img {
   border: var(--verdeepa) solid 2px;
   width: 150px;
@@ -245,6 +247,7 @@ nav a {
   align-items: center;
   gap: 40px;
   height: 200vh;
+  width: 20%;
 /* From https://css.glass */
 background: rgba(255, 255, 255, 0.56);
 border-radius: 16px;

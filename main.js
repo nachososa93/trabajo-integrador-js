@@ -182,11 +182,12 @@ const carritotemplate = (producto) => {
         `;
 };
 const renderCarrito = () => {
-  if (!carrito.lengh) {
+  if (!carrito.length) {
     carritoItem.innerHTML = `<p class="mensaje__carrito__vacio"> No hay articulos cargado en el carrito. (por el momento &#128521 ) </p>`;
+    console.log(carrito);
     return;
   }
-  carritoItem.innerHTML = carrito.map(carritotemplate).join("");
+  return carritoItem.innerHTML = carrito.map(carritotemplate).join("");
 };
 
 const calculoTotalCarrito = () => {
@@ -256,7 +257,7 @@ const carritoActualizado =()=>{
     guardarItemCarrito()
     renderCarrito()
     renderTotalCarrito()
-
+    actualizarCantidadCarritoImg()
 } 
 
 
@@ -275,7 +276,7 @@ const init = () => {
   buttonIngreso.addEventListener("click", redigirButton);
   cardProductosConteiner.addEventListener("click", agregarProductoAlCarrito);
   carritoActualizado()
-  actualizarCantidadCarritoImg()
+ 
 };
 
 init();

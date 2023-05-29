@@ -1,5 +1,5 @@
 const productos = [
-    {   nombre : "Barreno estandar",
+    {   nombre :`Barreno estandar`,
         id : 1,
         contiene: "Barreno estandar",
         categoria :"Barrenos y soportes",
@@ -8,7 +8,7 @@ const productos = [
 
     },
 
-    {   nombre : "Barreno reforzado",
+    {   nombre :"Barreno reforzado",
     id : 2,
     contiene: "Barreno reforzado",
     categoria :"Barrenos y soportes",
@@ -16,7 +16,7 @@ const productos = [
         imagen: ["./img-productos/barreno para golpear.jpg", "./img-productos/barreno zoom 1.jpg", "./img-productos/barreno zoom 2.jpg", "./img-productos/mango barreno reforzado.jpg"]
     },
 
-    {   nombre : "Barreno estandar y extensor",
+    {   nombre :"Barreno estandar y extensor",
     id : 3,
     contiene: "Barreno estandar + extensor",
     categoria :"Barrenos y soportes",
