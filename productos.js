@@ -10,9 +10,10 @@ const productos = [
 
     {   nombre :"Barreno reforzado",
     id : 2,
-    contiene: "Barreno reforzado",
+    contiene:"Barreno reforzado",
     categoria :"Barrenos y soportes",
-    precio: "25.000",
+    precio:"25.000",
+    imagenPortada :"./img-productos/barreno para golpear.jpg",
         imagen: ["./img-productos/barreno para golpear.jpg", "./img-productos/barreno zoom 1.jpg", "./img-productos/barreno zoom 2.jpg", "./img-productos/mango barreno reforzado.jpg"]
     },
 
@@ -24,7 +25,7 @@ const productos = [
     imagen: ["./img-productos/barreno estandar.jpg", "./img-productos/barreno zoom 1.jpg", "./img-productos/barreno zoom 2.jpg","./img-productos/EXTENSOR BARRENO.jpg", "./img-productos/extensor barreno zoom.jpg", "./img-productos/extensor barreno zoom 2.jpg" ]
     },
 
-    {   nombre : "Barreno reforzado y extensor",
+    {nombre : "Barreno reforzado y extensor",
     id : 4,
     contiene: "Barreno reforzado + extensor",
     categoria :"Barrenos y soportes",

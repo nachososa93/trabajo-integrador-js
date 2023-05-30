@@ -6,18 +6,16 @@ const contenedorCategoria = document.querySelector(".filter__productos");
 const buttonFilter = document.querySelectorAll(".categoria");
 const menuResponsiveImg = document.getElementById("menulabel");
 const menuResponsive = document.querySelector(".ulnav");
-const carritoContenedorImg = document.querySelector(
-  ".carrito__compras__imagen"
-);
-const carritoContenedor = document.querySelector(
-  ".carrito__compras__conteiner"
-);
+const carritoContenedorImg = document.querySelector(".carrito__compras__imagen");
+const carritoContenedor = document.querySelector(".carrito__compras__conteiner");
 const carritoItem = document.querySelector(".card__carrito");
 const buttonIngreso = document.querySelector(".ingreso__button");
 const buttonCrearCuenta = document.querySelector(".crear__cuenta__button");
 const logoHome = document.getElementById("logoepa");
 const totalCarrito = document.querySelector(".total__carrito");
 const cantidadCarritoImg = document.querySelector(".cantidad__carrito__conteiner")
+
+
 
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -72,7 +70,7 @@ ${imagen
 </div>
 <h3 class="contiene__producto">${contiene}</h3>
 <h3 class="precio__producto"> Precio:$${precio}</h3>
-<button class="agregar__producto__carrito" data-id =${id} data-nombre =${nombre} data-precio =${precio}>Agregar al carrito</button>
+<button class="agregar__producto__carrito" data-id =${id} data-nombre=${nombre} data-precio =${precio} data-contiene= ${contiene}>Agregar al carrito</button>
 </div>
 `;
 };
@@ -168,16 +166,17 @@ const redigirButton = ({ target }) => {
 };
 
 const carritotemplate = (producto) => {
-  const { nombre, precio, id, cantidad } = producto;
+  const { nombre, precio, id, cantidad, contiene } = producto;
   return ` 
     <div class="item__carrito__info"> 
             <h3 class="titulo__item__carrito">${nombre}</h3> 
             <span class="precio__item__carrito">${precio}</span> 
+            <p>${contiene}</p>
     </div> 
     <div class="manejar__cantidad"> 
             <button class="button__cantidad__carrito restar" data-id="${id}">-</button> 
             <span class="actual__cantidad">${cantidad}</span> 
-            <button class="button__cantidad__carrito sumar" data-id="${id}">+</button> 
+            <button class="button__cantidad__carrito sumar" data-id="${id}" data-cantidad=${cantidad}>+</button> 
     </div> 
         `;
 };
@@ -214,8 +213,8 @@ const hayProductoCargadoEnCarrito = (id) => {
 };
 
 const desestructurarProductosCarrito = (producto) => {
-  const { id, precio, nombre } = producto;
-  return { id, precio, nombre };
+  const { id, precio, nombre, contiene } = producto;
+  return { id, precio, nombre ,contiene };
 };
 const sumarProductoYaExistente = (producto) => {
   carrito = carrito.map((elemento) => {
@@ -224,6 +223,26 @@ const sumarProductoYaExistente = (producto) => {
       : elemento;
   });
 };
+
+const eliminarProductoCarrito 
+
+
+const restarProductoCarrito = (id)=>{
+  const existeProductoEnCarrito = carrito.find((producto)=>{ 
+    producto.id ===id
+
+    if(existeProductoEnCarrito.cantidad === 1){
+      eliminarProductoCarrito ()
+    }
+
+  })
+}
+
+
+
+
+
+
 
 const crearProductoEnCarrito =(producto)=>{
     carrito = [
@@ -234,15 +253,31 @@ const crearProductoEnCarrito =(producto)=>{
     ];
 
 };
+const manejarCantidadCarrito =({target})=>{
+  if (!target.classList.contains("button__cantidad__carrito")) {
+    return
+  }
+  if(target.classList.contains("sumar")){
+  
 
+  
+  }
+  if (target.classList.contains("restar"))
+  {}
+  carritoActualizado()
+  
+
+  
+  
+  }
+  
+  
+  
 
 const agregarProductoAlCarrito = (e) => {
-
   if (!e.target.classList.contains("agregar__producto__carrito")) {
-    
     return;
   }
-
   const producto = desestructurarProductosCarrito(e.target.dataset);
 
   if (hayProductoCargadoEnCarrito(producto.id)) {
@@ -250,15 +285,20 @@ const agregarProductoAlCarrito = (e) => {
   } else {
     crearProductoEnCarrito(producto)
   }
+ 
   carritoActualizado()
+
+
 };
 
 const carritoActualizado =()=>{
+  
     guardarItemCarrito()
     renderCarrito()
     renderTotalCarrito()
     actualizarCantidadCarritoImg()
 } 
+
 
 
 
@@ -275,6 +315,7 @@ const init = () => {
   buttonCrearCuenta.addEventListener("click", redigirButton);
   buttonIngreso.addEventListener("click", redigirButton);
   cardProductosConteiner.addEventListener("click", agregarProductoAlCarrito);
+  carritoItem.addEventListener("click", manejarCantidadCarrito)
   carritoActualizado()
  
 };
