@@ -6,17 +6,24 @@ const contenedorCategoria = document.querySelector(".filter__productos");
 const buttonFilter = document.querySelectorAll(".categoria");
 const menuResponsiveImg = document.getElementById("menulabel");
 const menuResponsive = document.querySelector(".ulnav");
-const carritoContenedorImg = document.querySelector(".carrito__compras__imagen");
-const carritoContenedor = document.querySelector(".carrito__compras__conteiner");
+const carritoContenedorImg = document.querySelector(
+  ".carrito__compras__imagen"
+);
+const carritoContenedor = document.querySelector(
+  ".carrito__compras__conteiner"
+);
 const carritoItem = document.querySelector(".card__carrito");
 const buttonIngreso = document.querySelector(".ingreso__button");
 const buttonCrearCuenta = document.querySelector(".crear__cuenta__button");
 const logoHome = document.getElementById("logoepa");
 const totalCarrito = document.querySelector(".total__carrito");
-const cantidadCarritoImg = document.querySelector(".cantidad__carrito__conteiner")
-
-
-
+const cantidadCarritoImg = document.querySelector(
+  ".cantidad__carrito__conteiner"
+);
+const buttonComprar = document.querySelector(".button__comprar");
+const buttonVaciar = document.querySelector(".button__vaciar");
+const alerta = document.querySelector(".cartel__alert");
+const contenidoCartelAlert = document.querySelector(".contenido__cartel__alert")
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -70,7 +77,7 @@ ${imagen
 </div>
 <h3 class="contiene__producto">${contiene}</h3>
 <h3 class="precio__producto"> Precio:$${precio}</h3>
-<button class="agregar__producto__carrito" data-id =${id} data-nombre=${nombre} data-precio =${precio} data-contiene= ${contiene}>Agregar al carrito</button>
+<button class="agregar__producto__carrito" data-id =${id} data-nombre="${nombre}" data-precio =${precio} data-contiene= ${contiene} data-image=${imagen}>Agregar al carrito</button>
 </div>
 `;
 };
@@ -183,10 +190,10 @@ const carritotemplate = (producto) => {
 const renderCarrito = () => {
   if (!carrito.length) {
     carritoItem.innerHTML = `<p class="mensaje__carrito__vacio"> No hay articulos cargado en el carrito. (por el momento &#128521 ) </p>`;
-    console.log(carrito);
+
     return;
   }
-  return carritoItem.innerHTML = carrito.map(carritotemplate).join("");
+  return (carritoItem.innerHTML = carrito.map(carritotemplate).join(""));
 };
 
 const calculoTotalCarrito = () => {
@@ -196,11 +203,10 @@ const calculoTotalCarrito = () => {
 };
 
 const actualizarCantidadCarritoImg = () => {
-    cantidadCarritoImg.innerHTML = carrito.reduce((acumulador,valor)=>{
-        return acumulador + valor.cantidad
-
-    },0)
-  };
+  cantidadCarritoImg.innerHTML = carrito.reduce((acumulador, valor) => {
+    return acumulador + valor.cantidad;
+  }, 0);
+};
 
 const renderTotalCarrito = () => {
   totalCarrito.innerHTML = `$${calculoTotalCarrito().toFixed(3)}`;
@@ -214,7 +220,7 @@ const hayProductoCargadoEnCarrito = (id) => {
 
 const desestructurarProductosCarrito = (producto) => {
   const { id, precio, nombre, contiene } = producto;
-  return { id, precio, nombre ,contiene };
+  return { id, precio, nombre, contiene };
 };
 const sumarProductoYaExistente = (producto) => {
   carrito = carrito.map((elemento) => {
@@ -223,56 +229,63 @@ const sumarProductoYaExistente = (producto) => {
       : elemento;
   });
 };
+const manejarRestaProductoCarrito = (id) => {
+  const productoExistenteEnCarrito = carrito.find(
+    (producto) => producto.id === id
+  );
 
-const eliminarProductoCarrito 
-
-
-const restarProductoCarrito = (id)=>{
-  const existeProductoEnCarrito = carrito.find((producto)=>{ 
-    producto.id ===id
-
-    if(existeProductoEnCarrito.cantidad === 1){
-      eliminarProductoCarrito ()
-    }
-
-  })
-}
-
-
-
-
-
-
-
-const crearProductoEnCarrito =(producto)=>{
-    carrito = [
-        ...carrito, {
-            ...producto,
-            cantidad:1,
-        },
-    ];
-
+  if (productoExistenteEnCarrito.cantidad === 1) {
+    eliminarProductoCarrito(productoExistenteEnCarrito);
+    return;
+  }
+  restarProductoCarrito(productoExistenteEnCarrito);
+  return;
 };
-const manejarCantidadCarrito =({target})=>{
+
+const eliminarProductoCarrito = (productoExistenteEnCarrito) => {
+  carrito = carrito.filter((producto) => {
+    return producto.id !== productoExistenteEnCarrito.id;
+  });
+  carritoActualizado();
+};
+
+const restarProductoCarrito = (productoExistenteEnCarrito) => {
+  carrito = carrito.map((producto) => {
+    return producto.id === productoExistenteEnCarrito.id
+      ? { ...producto, cantidad: Number(producto.cantidad) - 1 }
+      : producto;
+  });
+};
+
+const manejarSumaProductoCarrito = (id) => {
+  const productoExistenteEnCarrito = carrito.find(
+    (producto) => producto.id === id
+  );
+  sumarProductoYaExistente(productoExistenteEnCarrito);
+  return;
+};
+
+const crearProductoEnCarrito = (producto) => {
+  carrito = [
+    ...carrito,
+    {
+      ...producto,
+      cantidad: 1,
+    },
+  ];
+};
+const manejarCantidadCarrito = ({ target }) => {
   if (!target.classList.contains("button__cantidad__carrito")) {
-    return
+    return;
   }
-  if(target.classList.contains("sumar")){
-  
-
-  
+  if (target.classList.contains("sumar")) {
+    manejarSumaProductoCarrito(target.dataset.id);
   }
-  if (target.classList.contains("restar"))
-  {}
-  carritoActualizado()
-  
-
-  
-  
+  if (target.classList.contains("restar")) {
+    manejarRestaProductoCarrito(target.dataset.id);
   }
-  
-  
-  
+  carritoActualizado();
+};
 
 const agregarProductoAlCarrito = (e) => {
   if (!e.target.classList.contains("agregar__producto__carrito")) {
@@ -283,24 +296,33 @@ const agregarProductoAlCarrito = (e) => {
   if (hayProductoCargadoEnCarrito(producto.id)) {
     sumarProductoYaExistente(producto);
   } else {
-    crearProductoEnCarrito(producto)
+    crearProductoEnCarrito(producto);
   }
- 
-  carritoActualizado()
 
-
+  carritoActualizado();
 };
 
-const carritoActualizado =()=>{
-  
-    guardarItemCarrito()
-    renderCarrito()
-    renderTotalCarrito()
-    actualizarCantidadCarritoImg()
-} 
+const finalizarCompra =()=>{
+  if (!carrito.length){
+    return
+  }
+ if(window.confirm("¿Desea finalizar su compra?")){
+    carrito=[]
+    contenidoCartelAlert.innerHTML = "Tu compra se realizo con exito"
+   alerta.classList.add("mostrar")
+  setTimeout(() => {
+    alerta.classList.remove("mostrar")
+  }, 2000);
+    carritoActualizado();
+  }
+}
 
-
-
+const carritoActualizado = () => {
+  guardarItemCarrito();
+  renderCarrito();
+  renderTotalCarrito();
+  actualizarCantidadCarritoImg();
+};
 
 const init = () => {
   renderProductos(appState.listaProductos[appState.indiceDeBucle]);
@@ -315,9 +337,9 @@ const init = () => {
   buttonCrearCuenta.addEventListener("click", redigirButton);
   buttonIngreso.addEventListener("click", redigirButton);
   cardProductosConteiner.addEventListener("click", agregarProductoAlCarrito);
-  carritoItem.addEventListener("click", manejarCantidadCarrito)
-  carritoActualizado()
- 
+  carritoItem.addEventListener("click", manejarCantidadCarrito);
+  buttonComprar.addEventListener("click", finalizarCompra);
+  carritoActualizado();
 };
 
 init();
