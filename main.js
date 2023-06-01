@@ -316,6 +316,19 @@ const finalizarCompra =()=>{
     carritoActualizado();
   }
 }
+const vaciarCarrito =()=>{
+  if (!carrito.length){
+    return
+  }
+  if(window.confirm("¿Desea vaciar su carrito?")){
+    carrito=[]
+    contenidoCartelAlert.innerHTML = "Carrito vaciado con exito"
+    alerta.classList.add("mostrar")
+   setTimeout(() => {
+     alerta.classList.remove("mostrar")
+   }, 2000);
+     carritoActualizado();
+}}
 
 const carritoActualizado = () => {
   guardarItemCarrito();
@@ -339,6 +352,7 @@ const init = () => {
   cardProductosConteiner.addEventListener("click", agregarProductoAlCarrito);
   carritoItem.addEventListener("click", manejarCantidadCarrito);
   buttonComprar.addEventListener("click", finalizarCompra);
+  buttonVaciar.addEventListener("click", vaciarCarrito)
   carritoActualizado();
 };
 

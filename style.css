@@ -95,6 +95,7 @@ nav {
 .ulnav {
   display: flex;
   gap: 50px;
+  width:60%;
 }
 .ulnav__hidden{
   display: none
