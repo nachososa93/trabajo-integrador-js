@@ -24,6 +24,7 @@ const buttonComprar = document.querySelector(".button__comprar");
 const buttonVaciar = document.querySelector(".button__vaciar");
 const alerta = document.querySelector(".cartel__alert");
 const contenidoCartelAlert = document.querySelector(".contenido__cartel__alert")
+const datosContacto = document.querySelector(".datoscontacto")
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -330,6 +331,8 @@ const vaciarCarrito =()=>{
      carritoActualizado();
 }}
 
+const 
+
 const carritoActualizado = () => {
   guardarItemCarrito();
   renderCarrito();
@@ -353,6 +356,7 @@ const init = () => {
   carritoItem.addEventListener("click", manejarCantidadCarrito);
   buttonComprar.addEventListener("click", finalizarCompra);
   buttonVaciar.addEventListener("click", vaciarCarrito)
+datosContacto.addEventListener("click", redirigirLinks)
   carritoActualizado();
 };
 
