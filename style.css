@@ -370,12 +370,21 @@ display: flex;
   color: var(--verdeepa);
   font-weight: bold;
 }
-.venta a img {
-  width: 60px;
-}
+
 .venta h2 {
   font-size: 30px;
   font-weight: 800;
+}
+.link__contact{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+
+}
+.link__contact img  {
+  width: 60px;
 }
 .contacto {
   display: flex;
@@ -416,11 +425,14 @@ display: flex;
   font-weight: bold;
 }
 
-footer p a img {
+.link__github img {
   width: 150px;
   height: 31px;
+  cursor: pointer;
 }
-footer p {
+
+footer {
+  padding-top: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -429,9 +441,6 @@ footer p {
   font-size: 20px;
   font-family: var(--info);
   font-weight: 500;
-}
-footer {
-  padding-top: 55px;
 }
 .form__login__conteiner {
   padding: 30px;

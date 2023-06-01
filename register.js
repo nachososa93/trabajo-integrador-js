@@ -5,7 +5,10 @@ const carritoContenedor= document.querySelector(".carrito__compras__conteiner")
 const buttonIngreso = document.querySelector(".ingreso__button")
 const buttonCrearCuenta = document.querySelector(".crear__cuenta__button")
 const logoHome = document.getElementById("logoepa")
-
+const formRegistro = document.querySelector(".form__registro")
+const buttonRegistro = document.querySelector(".button__registro")
+const emailInput = document.querySelector(".email__input")
+const passwordInput = document.querySelector(".contraseña__input")
 // FUNCION PARA EL BOTON DE MENU RESPONSIVE 
 const MenuResposiveManejo =(e)=>{
     menuResponsive.classList.toggle("ulnav__active")
@@ -39,6 +42,22 @@ const redigirButton=({target})=>{
  
     window.location.href = target.dataset.href
 }
+const inputVacio =(input)=>{
+   return !input.value.trim().length
+}
+
+
+const validarFormRegistro =()=>{
+	e.preventDefault();
+// comprobar que cada input introdusza el correcto + feedback
+
+// comprobar que no exista en la base de datos + feedback
+
+// // registrar el usuario y guardarlo en LS
+
+// redirigir
+
+}
 
 const init =()=> {
 
@@ -48,6 +67,7 @@ window.addEventListener("scroll",funcionMenusWindowsScrolls);
 buttonIngreso.addEventListener("click",redigirButton)
 buttonCrearCuenta.addEventListener("click",redigirButton)
 logoHome.addEventListener("click",redigirButton)
+buttonRegistro.addEventListener("click",validarFormRegistro)
 
 }
 

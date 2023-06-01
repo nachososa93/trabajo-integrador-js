@@ -24,49 +24,45 @@
           id="logoepa"
           data-href="index.html"
         />
-     
-    
+
         <ul class="ulnav">
           <li><a href="#header">Home</a></li>
           <li><a href="#equipo">Sobre Nosotros</a></li>
-          <li><a href="#productos">Productos</a></li>
+          <li><a href="#productos__main">Productos</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
-<div class="login">
-  <button class="ingreso__button" data-href="login.html">Ingresar</button>
-  <button class="crear__cuenta__button" data-href="register.html">Crear Cuenta</button>
-</div>
-<div class="carrito__compras__imagen">
-<img src="./img/carrito-de-compras.png" alt="Carrito de compras">
-<div class="cantidad__carrito__conteiner" >0</div>
+        <div class="login">
+          <button class="ingreso__button" data-href="login.html">
+            Ingresar
+          </button>
+          <button class="crear__cuenta__button" data-href="register.html">
+            Crear Cuenta
+          </button>
+        </div>
+        <div class="carrito__compras__imagen">
+          <img src="./img/carrito-de-compras.png" alt="Carrito de compras" />
+          <div class="cantidad__carrito__conteiner">0</div>
+        </div>
+        <label for="menu" id="menulabel"
+          ><img src="./img/menu.png" alt="" id="menu-img"
+        /></label>
+        <div class="carrito__compras__conteiner">
+          <h3>Tus carrito</h3>
 
-</div>
-<label for="menu" id="menulabel"
-><img src="./img/menu.png" alt="" id="menu-img"
-/></label>
-<div class="carrito__compras__conteiner"> 
-  <h3>Tus carrito</h3> 
+          <div class="card__carrito"></div>
 
-  <div class="card__carrito"> 
-         
-               
-          
-  </div> 
-
-  <div class="total__carrito__conteiner"> 
-          <p>Total:</p> 
-          <p class="total__carrito"></p>
-  </div> 
-  <button class="button__comprar">Comprar</button> 
-  <button class="button__vaciar">Eliminar carrito</button> 
- 
-</div> 
-
-
-
+          <div class="total__carrito__conteiner">
+            <p>Total:</p>
+            <p class="total__carrito"></p>
+          </div>
+          <button class="button__comprar">Comprar</button>
+          <button class="button__vaciar">Eliminar carrito</button>
+        </div>
       </nav>
     </header>
-    <div class="cartel__alert"><p class="contenido__cartel__alert">"Tu compra se realizo con exito"</p></div>
+    <div class="cartel__alert">
+      <p class="contenido__cartel__alert">"Tu compra se realizo con exito"</p>
+    </div>
     <section class="hero">
       <img
         src="./img-catalogo/imagencatalogo (9) resize.jpg"
@@ -122,65 +118,76 @@
     </section>
     <section class="productos__main">
       <div class="filter__productos">
-        <button class="categoria button__activo" >Todos</button>
-        <button class="categoria" data-categoria="Barrenos y soportes">Barrenos y soportes</button>
+        <button class="categoria button__activo">Todos</button>
+        <button class="categoria" data-categoria="Barrenos y soportes">
+          Barrenos y soportes
+        </button>
         <button class="categoria" data-categoria="Medicion">Medicion</button>
-        <button class="categoria" data-categoria="Instrumentos digitales">Instrumentos digitales</button>
-        
+        <button class="categoria" data-categoria="Instrumentos digitales">
+          Instrumentos digitales
+        </button>
       </div>
-      <div class="cards__productos">
-
+      <div class="cards__productos"></div>
+      <div class="button__vermas__cointener">
+        <button class="buttons__vermas">Ver mas productos</button>
       </div>
-      <div class="button__vermas__cointener"><button class="buttons__vermas">Ver mas productos</button></div>
     </section>
     <section class="contactomain" id="contacto">
       <div class="contacto">
         <h2>COMUNICATE CON <span>EPA</span></h2>
         <div class="datoscontacto">
-          <a
-            href="https://api.whatsapp.com/send?phone=5493534209842&text=Hola%20EPA%20!.%20"
-            target="_blank"
-            ><img src="./img/whatsapp.png" alt="logowhatsapp" />N° de Telefono:
-            +5493534209842</a
+          <p class="link__contact"
+            data-href="https://api.whatsapp.com/send?phone=5493534209842&text=Hola%20EPA%20!.%20"
           >
-          <a
-            href="https://www.instagram.com/epa.elementosparaagronomos/"
-            target="_blank"
-            ><img src="./img/instagram (1).png" alt="logofacebook" />Cuenta de
-            instagram: Epa - Elementos para agronomos</a
+            <img src="./img/whatsapp.png" alt="logowhatsapp" data-href="https://api.whatsapp.com/send?phone=5493534209842&text=Hola%20EPA%20!.%20" />N° de Telefono:
+            +5493534209842
+          </p>
+          <p
+            class="link__contact"
+            data-href="https://www.instagram.com/epa.elementosparaagronomos/"
           >
-          <a href="" target="_blank"
-            ><img src="./img/gmail.png" alt="logoemail" />Email:
-            Elementosparaagronomos@gmail.com</a
+            <img src="./img/instagram (1).png" alt="logofacebook"  data-href="https://www.instagram.com/epa.elementosparaagronomos/" />Cuenta de
+            instagram: Epa - Elementos para agronomos
+          </p>
+          <p class="link__contact" data-href="">
+            <img src="./img/gmail.png" alt="logoemail" />Email:
+            Elementosparaagronomos@gmail.com
+          </p>
+          <p
+            class="link__contact"
+            data-href="https://goo.gl/maps/Gs1Mnd925W7TayQ86"
           >
-          <a href="https://goo.gl/maps/Gs1Mnd925W7TayQ86" target="_blank"
-            ><img src="./img/ubicacion.png" alt="logoubicacion" />Villa Maria -
-            Cordoba - Argentina</a
-          >
+            <img src="./img/ubicacion.png" alt="logoubicacion"  data-href="https://goo.gl/maps/Gs1Mnd925W7TayQ86"/>Villa Maria -
+            Cordoba - Argentina
+          </p>
         </div>
       </div>
       <div class="venta" id="puntodeventas">
         <h2>NUESTROS PUNTOS DE VENTA</h2>
         <div class="datosventas">
-          <a
-            href="https://listado.mercadolibre.com.ar/_CustId_1167879276"
-            target="_blank"
-            ><img
-              src="./img/png-transparent-mercado-livre-hd-logo-removebg-preview.png"
-              alt="logomercadolibre"
-            />Tienda de Mercado Libre</a
+          <p
+            class="link__contact"
+            data-href="https://listado.mercadolibre.com.ar/_CustId_1167879276"
           >
+            <img
+              src="./img/png-transparent-mercado-livre-hd-logo-removebg-preview.png"
+              data-href="https://listado.mercadolibre.com.ar/_CustId_1167879276"
+              alt="logomercadolibre"
+            />Tienda de Mercado Libre
+          </p>
         </div>
       </div>
     </section>
-    
-    <footer>
+
+    <footer class="footer__conteiner">
       <p>
         Diseñado y desarrolado por
-        <a href="https://github.com/nachososa93" target="_blank"
+        <p class="link__github" data-href="https://github.com/nachososa93" 
           ><img
             src="./img/8059260213_aadd097b-0953-4909-a880-cdda8a642646 (1).png"
-            alt="" /></a
+            alt="logo Devies"
+            data-href="https://github.com/nachososa93" 
+            class="link__github" /></p
         >&#174;
       </p>
     </footer>

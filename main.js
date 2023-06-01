@@ -24,7 +24,8 @@ const buttonComprar = document.querySelector(".button__comprar");
 const buttonVaciar = document.querySelector(".button__vaciar");
 const alerta = document.querySelector(".cartel__alert");
 const contenidoCartelAlert = document.querySelector(".contenido__cartel__alert")
-const datosContacto = document.querySelector(".datoscontacto")
+const datosContacto = document.querySelector(".contactomain")
+const footer = document.querySelector(".link__github")
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -331,7 +332,17 @@ const vaciarCarrito =()=>{
      carritoActualizado();
 }}
 
-const 
+const redirigirLinks =(e)=>{
+ 
+if (!e.target.classList.contains("link__contact") && !e.target.classList.contains("link__github")){
+ return console.log(e.target.dataset.href);
+}
+
+
+ window.location.href = e.target.dataset.href
+
+
+}
 
 const carritoActualizado = () => {
   guardarItemCarrito();
@@ -357,6 +368,7 @@ const init = () => {
   buttonComprar.addEventListener("click", finalizarCompra);
   buttonVaciar.addEventListener("click", vaciarCarrito)
 datosContacto.addEventListener("click", redirigirLinks)
+footer.addEventListener("click",redirigirLinks)
   carritoActualizado();
 };
 
