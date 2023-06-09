@@ -21,7 +21,7 @@ const smallErrorPass = document.getElementById("password__error__1");
 const smallErrorPassRepeat = document.getElementById("password__error__2");
 const alerta = document.querySelector(".cartel__alert");
 const contenidoCartelAlertLogin = document.querySelector(
-    ".contenido__cartel__alert__login"
+    ".contenido__cartel__alert__register"
 );
 const cantidadCarritoImg = document.querySelector(
     ".cantidad__carrito__conteiner"
@@ -98,104 +98,28 @@ const cardProducto = (productos) => {
     cardProductosConteiner.innerHTML += e.map(cardProducto).join("");
   };
   
-  // FUNCION PARA OBTENER DETENER EL BUCLE DE VER MAS
   
-  const ultimoIndiceVerMas = () => {
-    return appState.indiceDeBucle === appState.limiteDeProductos - 1;
-  };
-  
-  // FUNCION PARA DARLE FUNCIONALIDAD AL BUTTON Y DETENER SU FUNCIONAMIENTO OCULTANDO BUTTON
-  
-  const verMasProductos = () => {
-    appState.indiceDeBucle += 1;
-    let { listaProductos, indiceDeBucle } = appState;
-    renderProductos(listaProductos[indiceDeBucle]);
-    if (ultimoIndiceVerMas()) {
-      buttonVerMas.classList.add("hidden");
-    }
-  };
-  
-  // FUNCION PARA DETENERMINAR SI EL BUTTON ESTA DESACTIVADO
-  
-  const buttonIncativo = (e) => {
-    return (
-      e.classList.contains("categoria") && !e.classList.contains("button__activo")
-    );
-  };
-  
-  // FUNCION PARA CAMBIAR EL ESTILO DEL BUTTON ACTIVADO
-  
-  const cambioEstilosButtonActivado = (categoriaSeleccionada) => {
-    const buttonList = [...buttonFilter];
-    buttonList.forEach((button) => {
-      if (button.dataset.categoria !== categoriaSeleccionada) {
-        button.classList.remove("button__activo");
-        return;
-      }
-      button.classList.add("button__activo");
-    });
-  };
-  
-  // FUNCION PARA OCULTAR EL BUTTON VER MAS EN FILTRO
-  
-  const mostrarVerMasEnFiltro = () => {
-    if (!appState.estadoFiltro) {
-      buttonVerMas.classList.remove("hidden");
-      return;
-    }
-    buttonVerMas.classList.add("hidden");
-  };
-  // FUNCION PARA CAMBIAR EL ESTADO DEL BUTTON Y DESACTIVAR EL BUTTON DE VER MAS
-  
-  const cambioEstado = (button) => {
-    appState.estadoFiltro = button.dataset.categoria;
-    cambioEstilosButtonActivado(appState.estadoFiltro);
-    mostrarVerMasEnFiltro();
-  };
-  // FUNCION PARA RENDERIZAR SOLO LOS PRODUCTOS FILTRADOS
-  
-  const renderProductosFiltrados = () => {
-    const productosFiltados = productos.filter((producto) => {
-      return producto.categoria === appState.estadoFiltro;
-    });
-    renderProductos(productosFiltados);
-  };
-  
-  // FUNCION PARA APLICAR EL FILTRO A LOS PRODUCTOS RENDERIZADOS TOTALES
-  
-  const aplicarFiltro = ({ target }) => {
-    if (!buttonIncativo(target)) {
-      return;
-    }
-    cambioEstado(target);
-    cardProductosConteiner.innerHTML = "";
-    if (appState.estadoFiltro) {
-      renderProductosFiltrados();
-      appState.indiceDeBucle = 0;
-  
-      return;
-    }
-    renderProductos(appState.listaProductos[0]);
-  };
   
   const redigirButton = ({ target }) => {
     window.location.href = target.dataset.href;
   };
   
   const carritotemplate = (producto) => {
-    const { nombre, precio, id, cantidad, contiene } = producto;
-    return ` 
-      <div class="item__carrito__info"> 
-              <h3 class="titulo__item__carrito">${nombre}</h3> 
-              <span class="precio__item__carrito">${precio}</span> 
-              <p>${contiene}</p>
-      </div> 
-      <div class="manejar__cantidad"> 
-              <button class="button__cantidad__carrito restar" data-id="${id}">-</button> 
-              <span class="actual__cantidad">${cantidad}</span> 
-              <button class="button__cantidad__carrito sumar" data-id="${id}" data-cantidad=${cantidad}>+</button> 
-      </div> 
-          `;
+    const { nombre, precio, id, cantidad, imagen } = producto;
+    return `<div class="item__carrito">
+    <div class="item__carrito__info"> 
+            <h3 class="titulo__item__carrito">${nombre}</h3> 
+            <img src="${imagen}" alt="${nombre}" class ="imagen__carrito"/>
+            <span class="precio__item__carrito">$${precio}</span> 
+          
+    </div> 
+    <div class="manejar__cantidad"> 
+            <button class="button__cantidad__carrito restar" data-id="${id}">-</button> 
+            <span class="actual__cantidad">${cantidad}</span> 
+            <button class="button__cantidad__carrito sumar" data-id="${id}" data-cantidad=${cantidad}>+</button> 
+    </div> 
+    </div>
+        `;
   };
   const renderCarrito = () => {
     if (!carrito.length) {
@@ -229,8 +153,8 @@ const cardProducto = (productos) => {
   };
   
   const desestructurarProductosCarrito = (producto) => {
-    const { id, precio, nombre, contiene } = producto;
-    return { id, precio, nombre, contiene };
+    const { id, precio, nombre, contiene, imagen } = producto;
+    return { id, precio, nombre, contiene, imagen };
   };
   const sumarProductoYaExistente = (producto) => {
     carrito = carrito.map((elemento) => {
@@ -416,7 +340,7 @@ const coincidenContraseñas = () => {
         feedbackError(smallErrorPassRepeat, "Las contraseñas deben coincidir");
         return false;
     } else {
-        console.log("asda");
+
         return true;
     }
 };
@@ -464,10 +388,10 @@ const validarFormRegistro = (e) => {
         alerta.classList.add("mostrar");
         setTimeout(() => {
             alerta.classList.remove("mostrar");
-        }, 3000);
+        }, 2000);
         setTimeout(() => {
             window.location.href = "login.html";
-        }, 3000);
+        }, 2500);
 
     }
 
@@ -484,7 +408,6 @@ const init = () => {
     buttonRegistro.addEventListener("click", validarFormRegistro);
     document.addEventListener("DOMContentLoaded", renderCarrito);
     document.addEventListener("DOMContentLoaded", renderTotalCarrito);
-
     carritoItem.addEventListener("click", manejarCantidadCarrito);
     buttonComprar.addEventListener("click", finalizarCompra);
     buttonVaciar.addEventListener("click", vaciarCarrito)

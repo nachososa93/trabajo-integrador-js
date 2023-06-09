@@ -26,6 +26,7 @@ const alerta = document.querySelector(".cartel__alert");
 const contenidoCartelAlert = document.querySelector(".contenido__cartel__alert")
 const datosContacto = document.querySelector(".contactomain")
 const footer = document.querySelector(".link__github")
+const alertProductoCard = document.querySelector(".conteiner__alert__producto__agregado__carrito")
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -66,7 +67,7 @@ const MenuResposiveManejo = (e) => {
 // FUNCION PARA FORMAR EL CONTENEDOR EN CADA PRODUCTO DEL ARRAY
 
 const cardProducto = (productos) => {
-  const { nombre, imagen, contiene, precio, id } = productos;
+  const { nombre, imagen,precio, id } = productos;
   return `
 <div class="card__producto__solo">
 <h2>${nombre.toUpperCase()}</h2>
@@ -77,9 +78,10 @@ ${imagen
   })
   .join("")}
 </div>
-<h3 class="contiene__producto">${contiene}</h3>
+
 <h3 class="precio__producto"> Precio:$${precio}</h3>
-<button class="agregar__producto__carrito" data-id =${id} data-nombre="${nombre}" data-precio =${precio} data-contiene= ${contiene} data-image=${imagen}>Agregar al carrito</button>
+<button class="agregar__producto__carrito" data-id =${id} data-nombre="${nombre}" data-precio =${precio} data-imagen="${imagen[0]}">Agregar al carrito</button>
+
 </div>
 `;
 };
@@ -174,19 +176,21 @@ const redigirButton = ({ target }) => {
   window.location.href = target.dataset.href;
 };
 
-const carritotemplate = (producto) => {
-  const { nombre, precio, id, cantidad, contiene } = producto;
-  return ` 
+const carritotemplate = (productos) => {
+  const { nombre, precio, id, cantidad, imagen } = productos;
+  return `<div class="item__carrito">
     <div class="item__carrito__info"> 
             <h3 class="titulo__item__carrito">${nombre}</h3> 
-            <span class="precio__item__carrito">${precio}</span> 
-            <p>${contiene}</p>
+            <img src="${imagen}" alt="${nombre}" class ="imagen__carrito"/>
+            <span class="precio__item__carrito">$${precio}</span> 
+          
     </div> 
     <div class="manejar__cantidad"> 
             <button class="button__cantidad__carrito restar" data-id="${id}">-</button> 
             <span class="actual__cantidad">${cantidad}</span> 
             <button class="button__cantidad__carrito sumar" data-id="${id}" data-cantidad=${cantidad}>+</button> 
     </div> 
+    </div>
         `;
 };
 const renderCarrito = () => {
@@ -221,9 +225,10 @@ const hayProductoCargadoEnCarrito = (id) => {
 };
 
 const desestructurarProductosCarrito = (producto) => {
-  const { id, precio, nombre, contiene } = producto;
-  return { id, precio, nombre, contiene };
+  const { id, precio, nombre, imagen } = producto;
+  return { id, precio, nombre, imagen };
 };
+
 const sumarProductoYaExistente = (producto) => {
   carrito = carrito.map((elemento) => {
     return elemento.id === producto.id
@@ -299,8 +304,16 @@ const agregarProductoAlCarrito = (e) => {
     sumarProductoYaExistente(producto);
   } else {
     crearProductoEnCarrito(producto);
+  
   }
+  
 
+  
+  alertProductoCard.classList.add("visible")
+ setTimeout(() => {
+  alertProductoCard.classList.remove("visible")
+  alertProductoCard.classList.add("remove")
+ }, 2000);
   carritoActualizado();
 };
 
@@ -314,7 +327,7 @@ const finalizarCompra =()=>{
    alerta.classList.add("mostrar")
   setTimeout(() => {
     alerta.classList.remove("mostrar")
-  }, 2000);
+  }, 3000);
     carritoActualizado();
   }
 }

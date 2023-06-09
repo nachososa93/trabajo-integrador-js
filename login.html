@@ -73,15 +73,21 @@
 
       </nav>
     </header>
+    <div class="cartel__alert">
+      <p class="contenido__cartel__alert__login"></p>
+    </div>
     <section class="form__login__conteiner">
       <form class="form__login">
         <label for="email__input"> Ingrese su Email</label>
-        <input type="email" class="email__input" id="email__input" />
+        <input type="email" class="email__input__login" id="email__input" />
+        <small class="email__error__login"></small>
         <label for="contraseña__input">Ingrese su contraseña</label>
-        <input type="password" class="contraseña__input" id="contraseña__input"/>
+        <input type="password" class="contraseña__input__login" id="contraseña__input"/>
+        <small class="password__error__login"></small>
         <div class="buttons__form">
-          <button >Iniciar sesion</button> 
-          <button >¿Olvidaste tu contraseña?</button>
+
+          <button class="button__login">Iniciar sesion</button> 
+          <button class="button__recuperar__contraseña">¿Olvidaste tu contraseña?</button>
         </div>
       </form>
       <div class="alert"></div>
