@@ -16,6 +16,7 @@ const passwordInput = document.querySelector(".contraseña__input");
 const passwordInputRepeat = document.querySelector(
     ".contraseña__input__repeat"
 );
+const buttonLogin = document.querySelector(".button__login")
 const smallErrorEmail = document.getElementById("email__error");
 const smallErrorPass = document.getElementById("password__error__1");
 const smallErrorPassRepeat = document.getElementById("password__error__2");
@@ -33,6 +34,7 @@ const buttonVaciar = document.querySelector(".button__vaciar");
 const totalCarrito = document.querySelector(".total__carrito");
 const contenidoCartelAlert = document.querySelector(".cartel__alert")
 const footer = document.querySelector(".link__github")
+const buttonSalirCuenta = document.querySelector(".salir__cuenta")
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 const guardarItemCarrito = () => {
@@ -381,6 +383,7 @@ const validarFormRegistro = (e) => {
         usuarios.push({
             email: emailInput.value,
             password: passwordInput.value,
+            cuentaLogeada : false
         });
 
         guardarUsuario();
@@ -397,6 +400,94 @@ const validarFormRegistro = (e) => {
 
     return;
 };
+const logearCuentaButtons =(emailInputLogin)=>{
+  nombreCuentaSpan.innerHTML = `${emailInputLogin.value}`
+  buttonSalirCuenta.classList.add("visible")
+  miCuentaButton.classList.add("visible")
+  buttonSalirCuenta.classList.remove("hidden")
+  miCuentaButton.classList.remove("hidden")
+  buttonIngreso.classList.add("hidden")
+  buttonCrearCuenta.classList.add("hidden")
+
+}
+const deslogearCuentaButtons =()=>{
+  nombreCuentaSpan.innerHTML = ""
+  buttonCrearCuenta.classList.add("visible")
+  buttonIngreso.classList.add("visible")
+  buttonCrearCuenta.classList.remove("hidden")
+  buttonIngreso.classList.remove("hidden")
+  buttonSalirCuenta.classList.add("hidden")
+  miCuentaButton.classList.add("hidden")
+}
+
+const modificarCuentaStateTrue =(emailInputLogin)=>{
+  const cuentaACambiarEstado = usuarios.filter((usuario) => {
+      return usuario.email == emailInputLogin.value
+  }
+  )
+cuentaACambiarEstado[0].cuentaLogeada = true  
+guardarUsuario()
+logearCuentaButtons(emailInputLogin)
+
+
+
+return
+  
+}
+const modificarCuentaStateFalse =()=>{
+  const cuentaACambiarEstado = usuarios.filter((usuario) => {
+      return usuario.email == nombreCuentaSpan.innerHTML
+  }
+  )
+  console.log(cuentaACambiarEstado);
+cuentaACambiarEstado[0].cuentaLogeada = false  
+guardarUsuario()
+deslogearCuentaButtons()
+
+
+
+return
+  
+}
+ 
+
+const ingresarUsuario = (e) => {
+  e.preventDefault()
+  inputEmailValido(emailInputLogin)
+  inputPasswordValido()
+  let todoEmailValido = inputEmailValido()
+  let todoPasswordValido = inputPasswordValido()
+
+  if (inputPasswordValido() && inputEmailValido()) {
+      modificarCuentaStateTrue(emailInputLogin)
+console.log(usuarios);
+      setTimeout(() => {
+          // window.location.href = "login.html";
+      }, 1500);
+    
+  }
+
+return
+}
+
+const salirUsuario=()=>{
+  modificarCuentaStateFalse()
+  console.log(usuarios);
+}
+const chequeoCuentaLogeada=()=>{
+  const hayCuentaLogeada = usuarios.filter((usuario) => {
+    return usuario.cuentaLogeada == true
+}
+)
+logearCuentaButtons(hayCuentaLogeada.email)
+// console.log(hayCuentaLogeada.length);
+// if(hayCuentaLogeada.length>= 1){
+// feedbackError(smallErrorPassLogin, "Ya hay una cuenta logeada")
+// return
+// }
+}
+
+
 
 const init = () => {
     menuResponsiveImg.addEventListener("click", MenuResposiveManejo);
@@ -411,6 +502,10 @@ const init = () => {
     carritoItem.addEventListener("click", manejarCantidadCarrito);
     buttonComprar.addEventListener("click", finalizarCompra);
     buttonVaciar.addEventListener("click", vaciarCarrito)
+    buttonLogin.addEventListener("click", ingresarUsuario)
+    buttonSalirCuenta.addEventListener("click",salirUsuario)
+    document.addEventListener("DOMContentLoaded", chequeoCuentaLogeada);
+   
 
 
     carritoActualizado();

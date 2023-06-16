@@ -28,10 +28,20 @@ const datosContacto = document.querySelector(".contactomain")
 const footer = document.querySelector(".link__github")
 const alertProductoCard = document.querySelector(".conteiner__alert__producto__agregado__carrito")
 
+const buttonLogin = document.querySelector(".button__login")
+const buttonSalirCuenta = document.querySelector(".salir__cuenta")
+const nombreCuentaSpan = document.querySelector(".nombre__cuenta")
+const miCuentaButton = document.querySelector(".mi__cuenta")
+
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 const guardarItemCarrito = () => {
   localStorage.setItem("carrito", JSON.stringify(carrito));
+};
+let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+const guardarUsuario = () => {
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
 };
 
 // funcion para desactivar carrito y menu resposive con click en pantalla
@@ -306,13 +316,10 @@ const agregarProductoAlCarrito = (e) => {
     crearProductoEnCarrito(producto);
   
   }
-  
-
-  
-  alertProductoCard.classList.add("visible")
+  alertProductoCard.classList.add("mostrar")
  setTimeout(() => {
-  alertProductoCard.classList.remove("visible")
-  alertProductoCard.classList.add("remove")
+  alertProductoCard.classList.remove("mostrar")
+  alertProductoCard.classList.remove("remove")
  }, 2000);
   carritoActualizado();
 };
@@ -325,9 +332,13 @@ const finalizarCompra =()=>{
     carrito=[]
     contenidoCartelAlert.innerHTML = "Tu compra se realizo con exito"
    alerta.classList.add("mostrar")
+ 
+   alerta.style.backgroundColor="var(--verdeepa)";
   setTimeout(() => {
     alerta.classList.remove("mostrar")
+    alerta.style.backgroundColor="";
   }, 3000);
+
     carritoActualizado();
   }
 }
@@ -339,8 +350,10 @@ const vaciarCarrito =()=>{
     carrito=[]
     contenidoCartelAlert.innerHTML = "Carrito vaciado con exito"
     alerta.classList.add("mostrar")
+    alerta.style.backgroundColor="red";
    setTimeout(() => {
      alerta.classList.remove("mostrar")
+     alerta.style.backgroundColor="";
    }, 2000);
      carritoActualizado();
 }}
@@ -348,14 +361,80 @@ const vaciarCarrito =()=>{
 const redirigirLinks =(e)=>{
  
 if (!e.target.classList.contains("link__contact") && !e.target.classList.contains("link__github")){
- return console.log(e.target.dataset.href);
+return
 }
-
-
  window.location.href = e.target.dataset.href
 
+}
+const logearCuentaButtons =(emailInputLogin)=>{
+  nombreCuentaSpan.innerHTML = `ASdsadsadsadsad`
+  buttonSalirCuenta.classList.add("visible")
+  miCuentaButton.classList.add("visible")
+  buttonSalirCuenta.classList.remove("hidden")
+  miCuentaButton.classList.remove("hidden")
+  buttonIngreso.classList.add("hidden")
+  buttonCrearCuenta.classList.add("hidden")
 
 }
+const deslogearCuentaButtons =()=>{
+  nombreCuentaSpan.innerHTML = ""
+  buttonCrearCuenta.classList.add("visible")
+  buttonIngreso.classList.add("visible")
+  buttonCrearCuenta.classList.remove("hidden")
+  buttonIngreso.classList.remove("hidden")
+  buttonSalirCuenta.classList.add("hidden")
+  miCuentaButton.classList.add("hidden")
+}
+
+const modificarCuentaStateTrue =(emailInputLogin)=>{
+  const cuentaACambiarEstado = usuarios.filter((usuario) => {
+      return usuario.email == emailInputLogin.value
+  }
+  )
+cuentaACambiarEstado[0].cuentaLogeada = true  
+guardarUsuario()
+logearCuentaButtons(emailInputLogin)
+
+
+
+return
+  
+}
+const modificarCuentaStateFalse =()=>{
+  const cuentaACambiarEstado = usuarios.filter((usuario) => {
+      return usuario.email == nombreCuentaSpan.innerHTML
+  }
+  )
+  console.log(cuentaACambiarEstado);
+cuentaACambiarEstado[0].cuentaLogeada = false  
+guardarUsuario()
+deslogearCuentaButtons()
+
+
+
+return
+  
+}
+ 
+const salirUsuario=()=>{
+  modificarCuentaStateFalse()
+  console.log(usuarios);
+}
+const chequeoCuentaLogeada=()=>{
+  const hayCuentaLogeada = usuarios.filter((usuario) => {
+    return usuario.cuentaLogeada == true
+}
+)
+logearCuentaButtons(hayCuentaLogeada.email)
+// console.log(hayCuentaLogeada.length);
+// if(hayCuentaLogeada.length>= 1){
+// feedbackError(smallErrorPassLogin, "Ya hay una cuenta logeada")
+// return
+// }
+}
+
+
+
 
 const carritoActualizado = () => {
   guardarItemCarrito();
@@ -363,7 +442,7 @@ const carritoActualizado = () => {
   renderTotalCarrito();
   actualizarCantidadCarritoImg();
 };
-
+// console.log(usuarios);
 const init = () => {
   renderProductos(appState.listaProductos[appState.indiceDeBucle]);
   document.addEventListener("DOMContentLoaded", renderCarrito);
@@ -382,6 +461,9 @@ const init = () => {
   buttonVaciar.addEventListener("click", vaciarCarrito)
 datosContacto.addEventListener("click", redirigirLinks)
 footer.addEventListener("click",redirigirLinks)
+document.addEventListener("DOMContentLoaded", chequeoCuentaLogeada);
+buttonSalirCuenta.addEventListener("click",salirUsuario)
+
   carritoActualizado();
 };
 

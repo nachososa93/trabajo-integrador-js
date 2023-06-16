@@ -24,6 +24,9 @@ const emailInputLogin = document.querySelector(".email__input__login")
 const contraseñaInputLogin = document.querySelector(".contraseña__input__login")
 const smallErrorEmailLogin = document.querySelector(".email__error__login")
 const smallErrorPassLogin = document.querySelector(".password__error__login")
+const buttonSalirCuenta = document.querySelector(".salir__cuenta")
+const nombreCuentaSpan = document.querySelector(".nombre__cuenta")
+const miCuentaButton = document.querySelector(".mi__cuenta")
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -312,6 +315,67 @@ const inputEmailValido = () => {
     valid = true;
     return valid;
 };
+const logearCuentaButtons =(emailInputLogin)=>{
+    nombreCuentaSpan.innerHTML = `${emailInputLogin.value}`
+    buttonSalirCuenta.classList.add("visible")
+    miCuentaButton.classList.add("visible")
+    buttonSalirCuenta.classList.remove("hidden")
+    miCuentaButton.classList.remove("hidden")
+    buttonIngreso.classList.add("hidden")
+    buttonCrearCuenta.classList.add("hidden")
+ 
+  }
+const deslogearCuentaButtons =()=>{
+    nombreCuentaSpan.innerHTML = ""
+    buttonCrearCuenta.classList.add("visible")
+    buttonIngreso.classList.add("visible")
+    buttonCrearCuenta.classList.remove("hidden")
+    buttonIngreso.classList.remove("hidden")
+    buttonSalirCuenta.classList.add("hidden")
+    miCuentaButton.classList.add("hidden")
+}
+
+const modificarCuentaStateTrue =(emailInputLogin)=>{
+    const cuentaACambiarEstado = usuarios.filter((usuario) => {
+        return usuario.email == emailInputLogin.value
+    }
+    )
+  
+  cuentaACambiarEstado[0].cuentaLogeada = true  
+  guardarUsuario()
+  logearCuentaButtons(emailInputLogin)
+
+
+  
+  return
+    
+}
+
+// const hayCuentaLogeada = usuarios.filter((usuario) => {
+//     return usuario.cuentaLogeada == true
+// }
+// )
+// console.log(hayCuentaLogeada.length);
+// if(hayCuentaLogeada.length>= 1){
+// feedbackError(smallErrorPassLogin, "Ya hay una cuenta logeada")
+// return
+// }
+const modificarCuentaStateFalse =()=>{
+    const cuentaACambiarEstado = usuarios.filter((usuario) => {
+        return usuario.email == nombreCuentaSpan.innerHTML
+    }
+    )
+    console.log(cuentaACambiarEstado);
+  cuentaACambiarEstado[0].cuentaLogeada = false  
+  guardarUsuario()
+  deslogearCuentaButtons()
+
+
+  
+  return
+    
+}
+   
 
 const ingresarUsuario = (e) => {
     e.preventDefault()
@@ -321,13 +385,35 @@ const ingresarUsuario = (e) => {
     let todoPasswordValido = inputPasswordValido()
 
     if (inputPasswordValido() && inputEmailValido()) {
+        modificarCuentaStateTrue(emailInputLogin)
+
         setTimeout(() => {
-            window.location.href = "index.html";
+            // window.location.href = "login.html";
         }, 1500);
+      
     }
 
   return
 }
+
+const salirUsuario=()=>{
+    modificarCuentaStateFalse()
+    console.log(usuarios);
+}
+
+const chequeoCuentaLogeada=()=>{
+  const hayCuentaLogeada = usuarios.filter((usuario) => {
+    return usuario.cuentaLogeada == true
+}
+)
+logearCuentaButtons(hayCuentaLogeada.email)
+// console.log(hayCuentaLogeada.length);
+// if(hayCuentaLogeada.length>= 1){
+// feedbackError(smallErrorPassLogin, "Ya hay una cuenta logeada")
+// return
+// }
+}
+
 const init = () => {
     menuResponsiveImg.addEventListener("click", MenuResposiveManejo)
     carritoContenedorImg.addEventListener("click", carritoManejo)
@@ -341,6 +427,11 @@ const init = () => {
     buttonComprar.addEventListener("click", finalizarCompra);
     buttonVaciar.addEventListener("click", vaciarCarrito)
     buttonLogin.addEventListener("click", ingresarUsuario)
+    buttonSalirCuenta.addEventListener("click",salirUsuario)
+    document.addEventListener("DOMContentLoaded", chequeoCuentaLogeada);
+    
+
+
 
     carritoActualizado();
 }

@@ -41,14 +41,14 @@ const productos = [
     id : 6,
     categoria :"Barrenos y soportes",
     precio: "35.000",
-    imagen: ["./img-productos/barreno para golpear.jpg","./img-productos/barreno zoom 1.jpg","./img-productos/barreno zoom 2.jpg","./img-productos/EXTENSOR BARRENO.jpg", "./img-productos/extensor barreno zoom.jpg", "./img-productos/extensor barreno zoom 2.jpg", "./img-productos/mango barreno reforzado.jpg","./img-productos/termometro.jpg","./img-productos/termometro 3.jpg","./img-productos/termometro 4.jpg","./img-productos/cucharin gris solo.png","./img-productos/cucharin gris solo 4.png"  ]
+    imagen: ["./img-productos/barreno para golpear.jpg","./img-productos/EXTENSOR BARRENO.jpg","./img-productos/extensor barreno zoom 2.jpg", "./img-productos/mango barreno reforzado.jpg","./img-productos/termometro 3.jpg","./img-productos/termometro 4.jpg","./img-productos/cucharin gris solo.png","./img-productos/cucharin gris solo 4.png"  ]
     },
 
     {   nombre : "Soporte tarjeta hidrosensibles",
     id : 7,
     categoria :"Barrenos y soportes",
     precio: "9000",
-    imagen: ["./img-productos/tarjeta hidrosensible  (1).jpeg", "./img-productos/tarjeta hidrosensible  (2).jpeg","./img-productos/tarjeta hidrosensible  (3).jpeg","./img-productos/tarjeta hidrosensible  (4).jpeg","./img-productos/tarjeta hidrosensible  (5).jpeg","./img-productos/tarjeta hidrosensible  (8).jpeg","./img-productos/tarjeta hidrosensible  (7).jpeg","./img-productos/tarjeta hidrosensible  (8).jpeg","./img-productos/tarjeta hidrosensible  (9).jpeg",]
+    imagen: ["./img-productos/tarjeta hidrosensible  (2).jpeg","./img-productos/tarjeta hidrosensible  (4).jpeg","./img-productos/tarjeta hidrosensible  (5).jpeg",,"./img-productos/tarjeta hidrosensible  (8).jpeg","./img-productos/tarjeta hidrosensible  (9).jpeg",]
     },
     
     {   nombre : "Termometro digital",
@@ -90,13 +90,13 @@ const productos = [
     id : 13,
     categoria :"Medicion",
     precio: "2500",
-    imagen: ["/img-productos/cucharin epa.jpeg","/img-productos/cucharin epa 2.jpeg","/img-productos/cucharin epa 3.jpeg","/img-productos/cucharin epa 4.jpeg","/img-productos/cucharin epa 5.jpeg","/img-productos/cucharin epa.jpeg"]
+    imagen: ["/img-productos/cucharin epa 2.jpeg","/img-productos/cucharin epa 3.jpeg","/img-productos/cucharin epa 5.jpeg","/img-productos/cucharin epa.jpeg"]
     },
     {   nombre : "Pluviometro",
     id : 14,
     categoria :"Medicion",
     precio: "12000",
-    imagen: ["./img-productos/pluviometro.jpg","./img-productos/pluviometro-1.jpg","./img-productos/pluviometroconzoom.jpg","./img-productos/pluviometro verde 3.jpeg","./img-productos/pluviometro poste.jpg","./img-productos/pluviometro azul 2.jpeg"]
+    imagen: ["./img-productos/pluviometro.jpg","./img-productos/pluviometro-1.jpg","./img-productos/pluviometroconzoom.jpg","./img-productos/pluviometro poste.jpg","./img-productos/pluviometro azul 2.jpeg"]
     },
     {   nombre : "Pachimetro",
     id : 15,
@@ -108,7 +108,7 @@ const productos = [
     id : 16,
     categoria :"Medicion",
     precio: "15000",
-    imagen: ["/img-productos/paño para muestreo.PNG","./img-productos/paño para muestreo 2 .jpg","/img-productos/Paño para muestreo 3.jpg","/img-productos/paño para muestreo 1.jpg", "/img-productos/paño ruta 12.jpg"]
+    imagen: ["/img-productos/paño para muestreo.PNG","./img-productos/paño para muestreo 2 .jpg","/img-productos/Paño para muestreo 3.jpg", "/img-productos/paño ruta 12.jpg"]
     },
     {   nombre : "Kit cosecha",
     id : 17,
@@ -132,5 +132,6 @@ const appState = {
     listaProductos:verMasFuncion(5),
     indiceDeBucle : 0,
     limiteDeProductos : verMasFuncion(5).length,
-    estadoFiltro : null
+    estadoFiltro : null,
+    cuentaLogeada : null
 }
