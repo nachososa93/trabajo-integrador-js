@@ -315,8 +315,10 @@ const inputEmailValido = () => {
     valid = true;
     return valid;
 };
-const logearCuentaButtons =(emailInputLogin)=>{
-    nombreCuentaSpan.innerHTML = `${emailInputLogin.value}`
+
+
+const logearCuentaButtons =(e)=>{
+    nombreCuentaSpan.innerHTML = `${e}`
     buttonSalirCuenta.classList.add("visible")
     miCuentaButton.classList.add("visible")
     buttonSalirCuenta.classList.remove("hidden")
@@ -343,7 +345,7 @@ const modificarCuentaStateTrue =(emailInputLogin)=>{
   
   cuentaACambiarEstado[0].cuentaLogeada = true  
   guardarUsuario()
-  logearCuentaButtons(emailInputLogin)
+  chequeoCuentaLogeada()
 
 
   
@@ -351,15 +353,7 @@ const modificarCuentaStateTrue =(emailInputLogin)=>{
     
 }
 
-// const hayCuentaLogeada = usuarios.filter((usuario) => {
-//     return usuario.cuentaLogeada == true
-// }
-// )
-// console.log(hayCuentaLogeada.length);
-// if(hayCuentaLogeada.length>= 1){
-// feedbackError(smallErrorPassLogin, "Ya hay una cuenta logeada")
-// return
-// }
+
 const modificarCuentaStateFalse =()=>{
     const cuentaACambiarEstado = usuarios.filter((usuario) => {
         return usuario.email == nombreCuentaSpan.innerHTML
@@ -386,10 +380,14 @@ const ingresarUsuario = (e) => {
 
     if (inputPasswordValido() && inputEmailValido()) {
         modificarCuentaStateTrue(emailInputLogin)
-
+        contenidoCartelAlertLogin.innerHTML = "Ingresaste con exito";
+        alerta.classList.add("mostrar");
         setTimeout(() => {
-            // window.location.href = "login.html";
+            alerta.classList.remove("mostrar");
         }, 1500);
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 4000);
       
     }
 
@@ -406,12 +404,9 @@ const chequeoCuentaLogeada=()=>{
     return usuario.cuentaLogeada == true
 }
 )
-logearCuentaButtons(hayCuentaLogeada.email)
-// console.log(hayCuentaLogeada.length);
-// if(hayCuentaLogeada.length>= 1){
-// feedbackError(smallErrorPassLogin, "Ya hay una cuenta logeada")
-// return
-// }
+const emailLogeado = hayCuentaLogeada[0].email
+logearCuentaButtons(emailLogeado)
+
 }
 
 const init = () => {

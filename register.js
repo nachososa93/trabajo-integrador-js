@@ -35,6 +35,9 @@ const totalCarrito = document.querySelector(".total__carrito");
 const contenidoCartelAlert = document.querySelector(".cartel__alert")
 const footer = document.querySelector(".link__github")
 const buttonSalirCuenta = document.querySelector(".salir__cuenta")
+const nombreCuentaSpan = document.querySelector(".nombre__cuenta")
+const miCuentaButton = document.querySelector(".mi__cuenta")
+
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 const guardarItemCarrito = () => {
@@ -400,8 +403,8 @@ const validarFormRegistro = (e) => {
 
     return;
 };
-const logearCuentaButtons =(emailInputLogin)=>{
-  nombreCuentaSpan.innerHTML = `${emailInputLogin.value}`
+const logearCuentaButtons =(e)=>{
+  nombreCuentaSpan.innerHTML = `${e}`
   buttonSalirCuenta.classList.add("visible")
   miCuentaButton.classList.add("visible")
   buttonSalirCuenta.classList.remove("hidden")
@@ -427,7 +430,7 @@ const modificarCuentaStateTrue =(emailInputLogin)=>{
   )
 cuentaACambiarEstado[0].cuentaLogeada = true  
 guardarUsuario()
-logearCuentaButtons(emailInputLogin)
+logearCuentaButtons()
 
 
 
@@ -460,10 +463,9 @@ const ingresarUsuario = (e) => {
 
   if (inputPasswordValido() && inputEmailValido()) {
       modificarCuentaStateTrue(emailInputLogin)
-console.log(usuarios);
       setTimeout(() => {
-          // window.location.href = "login.html";
-      }, 1500);
+          window.location.href = "login.html";
+      }, 2000);
     
   }
 
@@ -479,12 +481,9 @@ const chequeoCuentaLogeada=()=>{
     return usuario.cuentaLogeada == true
 }
 )
-logearCuentaButtons(hayCuentaLogeada.email)
-// console.log(hayCuentaLogeada.length);
-// if(hayCuentaLogeada.length>= 1){
-// feedbackError(smallErrorPassLogin, "Ya hay una cuenta logeada")
-// return
-// }
+const emailLogeado = hayCuentaLogeada[0].email
+logearCuentaButtons(emailLogeado)
+
 }
 
 

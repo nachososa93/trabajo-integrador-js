@@ -366,8 +366,8 @@ return
  window.location.href = e.target.dataset.href
 
 }
-const logearCuentaButtons =(emailInputLogin)=>{
-  nombreCuentaSpan.innerHTML = `ASdsadsadsadsad`
+const logearCuentaButtons =(e)=>{
+  nombreCuentaSpan.innerHTML = `${e}`
   buttonSalirCuenta.classList.add("visible")
   miCuentaButton.classList.add("visible")
   buttonSalirCuenta.classList.remove("hidden")
@@ -392,9 +392,9 @@ const modificarCuentaStateTrue =(emailInputLogin)=>{
   }
   )
 cuentaACambiarEstado[0].cuentaLogeada = true  
-guardarUsuario()
-logearCuentaButtons(emailInputLogin)
 
+logearCuentaButtons()
+guardarUsuario()
 
 
 return
@@ -425,12 +425,9 @@ const chequeoCuentaLogeada=()=>{
     return usuario.cuentaLogeada == true
 }
 )
-logearCuentaButtons(hayCuentaLogeada.email)
-// console.log(hayCuentaLogeada.length);
-// if(hayCuentaLogeada.length>= 1){
-// feedbackError(smallErrorPassLogin, "Ya hay una cuenta logeada")
-// return
-// }
+const emailLogeado = hayCuentaLogeada[0].email
+logearCuentaButtons(emailLogeado)
+
 }
 
 
