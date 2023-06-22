@@ -252,11 +252,12 @@ nav a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align:center;
   gap: 10px;
   width: 100%;
   font-size: 22px;
   font-weight: 600;
- text-justify:auto;
+ 
 }
 .integrantesgrupo {
   display: flex;
