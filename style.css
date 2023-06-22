@@ -421,6 +421,8 @@ body::-webkit-scrollbar-thumb,
   align-items: flex-start;
   justify-content: center;
   padding-top: 100px;
+  font-weight: 600
+  ;
 }
 .venta {
   width: 40%;
@@ -430,19 +432,8 @@ body::-webkit-scrollbar-thumb,
   flex-direction: column;
   gap: 100px;
 }
-.datosventas a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  font-size: 20px;
-  font-weight: 500;
-  font-family: var(--info);
-  font-style: bold;
-  text-decoration: none;
-  color: var(--grisoscuro);
-}
-.datosventas a:hover {
+
+.datosventas p:hover {
   color: var(--verdeepa);
   font-weight: bold;
 }
@@ -450,12 +441,13 @@ body::-webkit-scrollbar-thumb,
 .venta h2 {
   font-size: 30px;
   font-weight: 800;
+  text-align: center;
 }
 .link__contact {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+  gap: 50px;
   cursor: pointer;
 }
 .link__contact img {

@@ -171,14 +171,10 @@ flex-wrap: wrap;
     width: 50%;
   }
   .datoscontacto, .datosventas{
-    font-size: 10px;
+    font-size: 13px;
+
   }
-  .datoscontacto a img {
-    width: 35px;
-  }
-  .datosventas a img{
-    width: 45px;
-  }
+
  
  
 }
@@ -251,8 +247,8 @@ flex-wrap: wrap;
 .datoscontacto, .datosventas{
   align-items: start;
   justify-content: center;
-  gap: 30px;
-  padding-left: 20%;
+  gap: 50px;
+ width: 100%;
 }
 .datoscontacto a, .datosventas a {
  font-size: 12px;
@@ -302,9 +298,10 @@ height: 60px;
     text-size-adjust: auto;
   }
   .datosventas{
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: start;
     display: flex;
+
   }
   nav{
     height: 70px;
@@ -361,7 +358,7 @@ font-size: 15px
     width: 100%;
     align-items:start;
     padding-left: 10%;
-    justify-content: center;
+  
   }
   
   .datoscontacto a, .datosventas a {
