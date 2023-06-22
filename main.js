@@ -59,7 +59,8 @@ const funcionMenusWindowsScrolls = () => {
 // funcion para el boton de carrito
 
 const carritoManejo = () => {
-  carritoContenedor.classList.toggle("carrito__compras__flex");
+  carritoContenedor.classList.toggle("carrito__compras__flex")
+
   if (menuResponsive.classList.contains("ulnav__active")) {
     menuResponsive.classList.remove("ulnav__active");
     return;
@@ -115,7 +116,7 @@ const verMasProductos = () => {
   let { listaProductos, indiceDeBucle } = appState;
   renderProductos(listaProductos[indiceDeBucle]);
   if (ultimoIndiceVerMas()) {
-    buttonVerMas.classList.add("hidden");
+    buttonVerMas.classList.add("oculto");
   }
 };
 
@@ -144,10 +145,12 @@ const cambioEstilosButtonActivado = (categoriaSeleccionada) => {
 
 const mostrarVerMasEnFiltro = () => {
   if (!appState.estadoFiltro) {
-    buttonVerMas.classList.remove("hidden");
+    console.log(!appState.estadoFiltro);
+    buttonVerMas.classList.remove("oculto");
     return;
   }
-  buttonVerMas.classList.add("hidden");
+  buttonVerMas.classList.add("oculto");
+  return
 };
 // FUNCION PARA CAMBIAR EL ESTADO DEL BUTTON Y DESACTIVAR EL BUTTON DE VER MAS
 
@@ -162,6 +165,7 @@ const renderProductosFiltrados = () => {
   const productosFiltados = productos.filter((producto) => {
     return producto.categoria === appState.estadoFiltro;
   });
+
   renderProductos(productosFiltados);
 };
 
@@ -180,6 +184,7 @@ const aplicarFiltro = ({ target }) => {
     return;
   }
   renderProductos(appState.listaProductos[0]);
+  return
 };
 
 const redigirButton = ({ target }) => {
