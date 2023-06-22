@@ -413,6 +413,7 @@ font-size: 15px
      .login button {
       width: 100px;
       height: 20px;
+      font-size: 7px;
      }
      .footer__conteiner  {
       font-size: 10px;
