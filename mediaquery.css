@@ -136,6 +136,9 @@ flex-wrap: wrap;
   .integrantes h3 {
     font-size: 15px;
   }
+  .mensaje__carrito__vacio{
+  padding-left: 10px;
+  }
   .contactnav,
   .ulnav a {
     font-size: 14px;
@@ -153,7 +156,9 @@ flex-wrap: wrap;
     padding-bottom: 50px;
     
    }
-
+.card__producto__solo{
+  width: 85%;
+}
   .integrantes img {
     width: 100px;
     height: 100px;
@@ -174,7 +179,10 @@ flex-wrap: wrap;
     font-size: 13px;
 
   }
+  .imagenes__producto{
+    gap: 12px;
 
+     }
  
  
 }
@@ -214,6 +222,9 @@ flex-wrap: wrap;
   #menulabel img {
     width: 40px;
   }
+  .imagenes__producto img{
+   height: 95px;
+     }
   .filter__productos{
     gap: 10px;
  width: 90%;
@@ -269,8 +280,8 @@ flex-wrap: wrap;
   margin: 0px;
  }
  .card__producto__solo{
-  width: 90%;
-  max-width: min-content;
+width: 70%;
+
   padding: 10px;
   margin: 10px;
  }
@@ -283,8 +294,11 @@ gap: 10px;
 width: 90%;
  }
  .imagenes__producto img{
-height: 60px;
+height: 90px;
  }
+ .imagenes__producto img:hover{
+ height: 150%;
+   }
 }
 @media (max-width: 600px) {
   .carrito__compras__conteiner{
@@ -303,6 +317,9 @@ height: 60px;
     display: flex;
 
   }
+  .imagenes__producto img{
+    height: 70px;
+     }
   nav{
     height: 70px;
     padding: 0px 5px;
@@ -407,6 +424,9 @@ font-size: 15px
       width: 230px;
       
      }
+     .card__producto__solo{
+      width: 80%;
+     }
      .login button {
       width: 100px;
       height: 20px;
@@ -422,8 +442,17 @@ font-size: 15px
     }
    
   }
+  @media (max-width: 450px){
+    .imagenes__producto img {
+      border: 1px solid var(--grisoscuro);
+    height: 62px;
+      gap: 1px;
+    }
+  }
 @media (max-width: 400px) {
- 
+  .card__producto__solo{
+    width: 85%;
+   }
   .equipo-texto{
     font-size: 15px;
     padding-top: 0px;
@@ -453,15 +482,15 @@ width: 70%;
   }
   .imagenes__producto img {
     border: 1px solid var(--grisoscuro);
+    height: 58px;
   }
+ 
   .titulointegrantes h2,
   .contacto h2,
   .venta h2 {
     font-size: 15px;
   }
-   .datoscontacto a img, .datosventas a img{
-    width: 30px;
-   }
+  
    .datoscontacto, .datosventas{
     font-size: 12px;
     gap: 20px;
@@ -472,7 +501,9 @@ padding: 0px;
     align-items: center;
 
    }
-   
+   .datoscontacto p, .datosventas p{
+    gap: 10px;
+   }
    .contactomain{
     padding: 20px;
    }
@@ -480,7 +511,7 @@ padding: 0px;
 
     width: 100%;
     padding: 0px;
-    margin-top: 100px;
+   padding-top: 30px;
    }
    .ulnav{
     top: 70px;

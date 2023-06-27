@@ -23,15 +23,19 @@ const cantidadCarritoImg = document.querySelector(
 const buttonComprar = document.querySelector(".button__comprar");
 const buttonVaciar = document.querySelector(".button__vaciar");
 const alerta = document.querySelector(".cartel__alert");
-const contenidoCartelAlert = document.querySelector(".contenido__cartel__alert")
-const datosContacto = document.querySelector(".contactomain")
-const footer = document.querySelector(".link__github")
-const alertProductoCard = document.querySelector(".conteiner__alert__producto__agregado__carrito")
+const contenidoCartelAlert = document.querySelector(
+  ".contenido__cartel__alert"
+);
+const datosContacto = document.querySelector(".contactomain");
+const footer = document.querySelector(".link__github");
+const alertProductoCard = document.querySelector(
+  ".conteiner__alert__producto__agregado__carrito"
+);
 
-const buttonLogin = document.querySelector(".button__login")
-const buttonSalirCuenta = document.querySelector(".salir__cuenta")
-const nombreCuentaSpan = document.querySelector(".nombre__cuenta")
-const miCuentaButton = document.querySelector(".mi__cuenta")
+const buttonLogin = document.querySelector(".button__login");
+const buttonSalirCuenta = document.querySelector(".salir__cuenta");
+const nombreCuentaSpan = document.querySelector(".nombre__cuenta");
+const miCuentaButton = document.querySelector(".mi__cuenta");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -41,7 +45,7 @@ const guardarItemCarrito = () => {
 let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
 const guardarUsuario = () => {
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
 };
 
 // funcion para desactivar carrito y menu resposive con click en pantalla
@@ -59,7 +63,7 @@ const funcionMenusWindowsScrolls = () => {
 // funcion para el boton de carrito
 
 const carritoManejo = () => {
-  carritoContenedor.classList.toggle("carrito__compras__flex")
+  carritoContenedor.classList.toggle("carrito__compras__flex");
 
   if (menuResponsive.classList.contains("ulnav__active")) {
     menuResponsive.classList.remove("ulnav__active");
@@ -78,7 +82,7 @@ const MenuResposiveManejo = (e) => {
 // FUNCION PARA FORMAR EL CONTENEDOR EN CADA PRODUCTO DEL ARRAY
 
 const cardProducto = (productos) => {
-  const { nombre, imagen,precio, id } = productos;
+  const { nombre, imagen, precio, id } = productos;
   return `
 <div class="card__producto__solo">
 <h2>${nombre.toUpperCase()}</h2>
@@ -91,7 +95,9 @@ ${imagen
 </div>
 
 <h3 class="precio__producto"> Precio:$${precio}</h3>
-<button class="agregar__producto__carrito" data-id =${id} data-nombre="${nombre}" data-precio =${precio} data-imagen="${imagen[0]}">Agregar al carrito</button>
+<button class="agregar__producto__carrito" data-id =${id} data-nombre="${nombre}" data-precio =${precio} data-imagen="${
+    imagen[0]
+  }">Agregar al carrito</button>
 
 </div>
 `;
@@ -150,7 +156,7 @@ const mostrarVerMasEnFiltro = () => {
     return;
   }
   buttonVerMas.classList.add("oculto");
-  return
+  return;
 };
 // FUNCION PARA CAMBIAR EL ESTADO DEL BUTTON Y DESACTIVAR EL BUTTON DE VER MAS
 
@@ -184,13 +190,13 @@ const aplicarFiltro = ({ target }) => {
     return;
   }
   renderProductos(appState.listaProductos[0]);
-  return
+  return;
 };
-
+// FUNCION PARA REDIRIGR BUTTONS
 const redigirButton = ({ target }) => {
   window.location.href = target.dataset.href;
 };
-
+// FORMADOR DE TEMPLATE
 const carritotemplate = (productos) => {
   const { nombre, precio, id, cantidad, imagen } = productos;
   return `<div class="item__carrito">
@@ -208,6 +214,7 @@ const carritotemplate = (productos) => {
     </div>
         `;
 };
+// FUNCION RENDER DE CARRITO
 const renderCarrito = () => {
   if (!carrito.length) {
     carritoItem.innerHTML = `<p class="mensaje__carrito__vacio"> No hay articulos cargado en el carrito. (por el momento &#128521 ) </p>`;
@@ -216,34 +223,34 @@ const renderCarrito = () => {
   }
   return (carritoItem.innerHTML = carrito.map(carritotemplate).join(""));
 };
-
+// FUNCION PARA CALCULO DE CARRITO
 const calculoTotalCarrito = () => {
   return carrito.reduce((acumulador, valor) => {
     return acumulador + Number(valor.precio) * Number(valor.cantidad);
   }, 0);
 };
-
+// ACTUALIZAR BURBUJA DEL CARRITO
 const actualizarCantidadCarritoImg = () => {
   cantidadCarritoImg.innerHTML = carrito.reduce((acumulador, valor) => {
     return acumulador + valor.cantidad;
   }, 0);
 };
-
+// RENDERIZAR EL TOTAL DE CARRITO
 const renderTotalCarrito = () => {
   totalCarrito.innerHTML = `$${calculoTotalCarrito().toFixed(3)}`;
 };
-
+// COMPROBAR SI HAY PRODUCTO EN CARRITO
 const hayProductoCargadoEnCarrito = (id) => {
   return carrito.find((elemento) => {
     return elemento.id === id;
   });
 };
-
+// DESTRUCTURAR CARRITO
 const desestructurarProductosCarrito = (producto) => {
   const { id, precio, nombre, imagen } = producto;
   return { id, precio, nombre, imagen };
 };
-
+// FUNCION PARA SUMAR PRODUCTOS YA EXISTENTE AL CARRITO
 const sumarProductoYaExistente = (producto) => {
   carrito = carrito.map((elemento) => {
     return elemento.id === producto.id
@@ -251,6 +258,8 @@ const sumarProductoYaExistente = (producto) => {
       : elemento;
   });
 };
+
+// FUNCION PARA RESTAR PRODUCTO EN CARRITO
 const manejarRestaProductoCarrito = (id) => {
   const productoExistenteEnCarrito = carrito.find(
     (producto) => producto.id === id
@@ -263,14 +272,14 @@ const manejarRestaProductoCarrito = (id) => {
   restarProductoCarrito(productoExistenteEnCarrito);
   return;
 };
-
+// ELIMINA EL PRODUCTO RESTAR LA ULTIMA UNIDAD EN CARRITO
 const eliminarProductoCarrito = (productoExistenteEnCarrito) => {
   carrito = carrito.filter((producto) => {
     return producto.id !== productoExistenteEnCarrito.id;
   });
   carritoActualizado();
 };
-
+// RESTA PRODUCTO DE CARRITO
 const restarProductoCarrito = (productoExistenteEnCarrito) => {
   carrito = carrito.map((producto) => {
     return producto.id === productoExistenteEnCarrito.id
@@ -278,7 +287,7 @@ const restarProductoCarrito = (productoExistenteEnCarrito) => {
       : producto;
   });
 };
-
+// FUNCION PARA SUMAR PRODUCTO EN CARRITO
 const manejarSumaProductoCarrito = (id) => {
   const productoExistenteEnCarrito = carrito.find(
     (producto) => producto.id === id
@@ -286,7 +295,7 @@ const manejarSumaProductoCarrito = (id) => {
   sumarProductoYaExistente(productoExistenteEnCarrito);
   return;
 };
-
+// SUMAR PRODUCTO NUEVO AL CARRITO
 const crearProductoEnCarrito = (producto) => {
   carrito = [
     ...carrito,
@@ -296,6 +305,7 @@ const crearProductoEnCarrito = (producto) => {
     },
   ];
 };
+// MANEJAR PRODUCTO EN CARRITO Y ACTUALIZAR
 const manejarCantidadCarrito = ({ target }) => {
   if (!target.classList.contains("button__cantidad__carrito")) {
     return;
@@ -308,7 +318,7 @@ const manejarCantidadCarrito = ({ target }) => {
   }
   carritoActualizado();
 };
-
+// AGREGAR PRODUCTO AL CARRITO
 const agregarProductoAlCarrito = (e) => {
   if (!e.target.classList.contains("agregar__producto__carrito")) {
     return;
@@ -319,132 +329,124 @@ const agregarProductoAlCarrito = (e) => {
     sumarProductoYaExistente(producto);
   } else {
     crearProductoEnCarrito(producto);
-  
   }
-  alertProductoCard.classList.add("mostrar")
- setTimeout(() => {
-  alertProductoCard.classList.remove("mostrar")
-  alertProductoCard.classList.remove("remove")
- }, 2000);
+  alertProductoCard.classList.add("mostrar");
+  setTimeout(() => {
+    alertProductoCard.classList.remove("mostrar");
+    alertProductoCard.classList.remove("remove");
+  }, 2000);
   carritoActualizado();
 };
-
-const finalizarCompra =()=>{
-  if (!carrito.length){
-    return
+// FUNCION PARA FINALIZAR COMPRA Y FEEDBACK
+const finalizarCompra = () => {
+  if (!carrito.length) {
+    return;
   }
- if(window.confirm("¿Desea finalizar su compra?")){
-    carrito=[]
-    contenidoCartelAlert.innerHTML = "Tu compra se realizo con exito"
-   alerta.classList.add("mostrar")
- 
-   alerta.style.backgroundColor="var(--verdeepa)";
-  setTimeout(() => {
-    alerta.classList.remove("mostrar")
-    alerta.style.backgroundColor="";
-  }, 3000);
+  if (window.confirm("¿Desea finalizar su compra?")) {
+    carrito = [];
+    contenidoCartelAlert.innerHTML = "Tu compra se realizo con exito";
+    alerta.classList.add("mostrar");
+
+    alerta.style.backgroundColor = "var(--verdeepa)";
+    setTimeout(() => {
+      alerta.classList.remove("mostrar");
+      alerta.style.backgroundColor = "";
+    }, 3000);
 
     carritoActualizado();
   }
-}
-const vaciarCarrito =()=>{
-  if (!carrito.length){
-    return
+};
+// ELIMINAR  TODOS LOS PRODUCTOS DEL CARRITO Y FEEDBACK
+const vaciarCarrito = () => {
+  if (!carrito.length) {
+    return;
   }
-  if(window.confirm("¿Desea vaciar su carrito?")){
-    carrito=[]
-    contenidoCartelAlert.innerHTML = "Carrito vaciado con exito"
-    alerta.classList.add("mostrar")
-    alerta.style.backgroundColor="red";
-   setTimeout(() => {
-     alerta.classList.remove("mostrar")
-     alerta.style.backgroundColor="";
-   }, 2000);
-     carritoActualizado();
-}}
-
-const redirigirLinks =(e)=>{
- 
-if (!e.target.classList.contains("link__contact") && !e.target.classList.contains("link__github")){
-return
-}
- window.location.href = e.target.dataset.href
-
-}
-const logearCuentaButtons =(e)=>{
-  nombreCuentaSpan.innerHTML = `${e}`
-  buttonSalirCuenta.classList.add("visible")
-  miCuentaButton.classList.add("visible")
-  buttonSalirCuenta.classList.remove("hidden")
-  miCuentaButton.classList.remove("hidden")
-  buttonIngreso.classList.add("hidden")
-  buttonCrearCuenta.classList.add("hidden")
-
-}
-const deslogearCuentaButtons =()=>{
-  nombreCuentaSpan.innerHTML = ""
-  buttonCrearCuenta.classList.add("visible")
-  buttonIngreso.classList.add("visible")
-  buttonCrearCuenta.classList.remove("hidden")
-  buttonIngreso.classList.remove("hidden")
-  buttonSalirCuenta.classList.add("hidden")
-  miCuentaButton.classList.add("hidden")
-}
-
-const modificarCuentaStateTrue =(emailInputLogin)=>{
+  if (window.confirm("¿Desea vaciar su carrito?")) {
+    carrito = [];
+    contenidoCartelAlert.innerHTML = "Carrito vaciado con exito";
+    alerta.classList.add("mostrar");
+    alerta.style.backgroundColor = "red";
+    setTimeout(() => {
+      alerta.classList.remove("mostrar");
+      alerta.style.backgroundColor = "";
+    }, 2000);
+    carritoActualizado();
+  }
+};
+// REDIRIGIR LINKS
+const redirigirLinks = (e) => {
+  if (
+    !e.target.classList.contains("link__contact") &&
+    !e.target.classList.contains("link__github")
+  ) {
+    return;
+  }
+  window.location.href = e.target.dataset.href;
+};
+// CUENTA LOGEADA Y CAMBIO DE STYLES A BUTTONS
+const logearCuentaButtons = (e) => {
+  nombreCuentaSpan.innerHTML = `${e}`;
+  buttonSalirCuenta.classList.add("visible");
+  miCuentaButton.classList.add("visible");
+  buttonSalirCuenta.classList.remove("hidden");
+  miCuentaButton.classList.remove("hidden");
+  buttonIngreso.classList.add("hidden");
+  buttonCrearCuenta.classList.add("hidden");
+};
+// CUENTA DESLOGEADA Y CAMBIO DE STYLES A BUTTONS
+const deslogearCuentaButtons = () => {
+  nombreCuentaSpan.innerHTML = "";
+  buttonCrearCuenta.classList.add("visible");
+  buttonIngreso.classList.add("visible");
+  buttonCrearCuenta.classList.remove("hidden");
+  buttonIngreso.classList.remove("hidden");
+  buttonSalirCuenta.classList.add("hidden");
+  miCuentaButton.classList.add("hidden");
+};
+// MODIFICA EL ESTADO DE CUENTA A TRUE - (logeado)
+const modificarCuentaStateTrue = (emailInputLogin) => {
   const cuentaACambiarEstado = usuarios.filter((usuario) => {
-      return usuario.email == emailInputLogin.value
-  }
-  )
-cuentaACambiarEstado[0].cuentaLogeada = true  
+    return usuario.email == emailInputLogin.value;
+  });
+  cuentaACambiarEstado[0].cuentaLogeada = true;
 
-logearCuentaButtons()
-guardarUsuario()
+  logearCuentaButtons();
+  guardarUsuario();
 
-
-return
-  
-}
-const modificarCuentaStateFalse =()=>{
+  return;
+};
+// MODIFICAR EL ESTADO DE CUENTA A FALSE (DESLOGEADO)
+const modificarCuentaStateFalse = () => {
   const cuentaACambiarEstado = usuarios.filter((usuario) => {
-      return usuario.email == nombreCuentaSpan.innerHTML
-  }
-  )
-  console.log(cuentaACambiarEstado);
-cuentaACambiarEstado[0].cuentaLogeada = false  
-guardarUsuario()
-deslogearCuentaButtons()
+    return usuario.email == nombreCuentaSpan.innerHTML;
+  });
 
+  cuentaACambiarEstado[0].cuentaLogeada = false;
+  guardarUsuario();
+  deslogearCuentaButtons();
+  return;
+};
+// FUNCION PARA DESLOGEAR
+const salirUsuario = () => {
+  modificarCuentaStateFalse();
 
-
-return
-  
-}
- 
-const salirUsuario=()=>{
-  modificarCuentaStateFalse()
-  console.log(usuarios);
-}
-const chequeoCuentaLogeada=()=>{
+};
+// CHEQUEO DE CUENTA PARA OBTENER SU ESTADO
+const chequeoCuentaLogeada = () => {
   const hayCuentaLogeada = usuarios.filter((usuario) => {
-    return usuario.cuentaLogeada == true
-}
-)
-const emailLogeado = hayCuentaLogeada[0].email
-logearCuentaButtons(emailLogeado)
-
-}
-
-
-
-
+    return usuario.cuentaLogeada == true;
+  });
+  const emailLogeado = hayCuentaLogeada[0].email;
+  logearCuentaButtons(emailLogeado);
+};
+// FUNCION PARA ACTUALIZAR CARRITO
 const carritoActualizado = () => {
   guardarItemCarrito();
   renderCarrito();
   renderTotalCarrito();
   actualizarCantidadCarritoImg();
 };
-// console.log(usuarios);
+
 const init = () => {
   renderProductos(appState.listaProductos[appState.indiceDeBucle]);
   document.addEventListener("DOMContentLoaded", renderCarrito);
@@ -460,11 +462,11 @@ const init = () => {
   cardProductosConteiner.addEventListener("click", agregarProductoAlCarrito);
   carritoItem.addEventListener("click", manejarCantidadCarrito);
   buttonComprar.addEventListener("click", finalizarCompra);
-  buttonVaciar.addEventListener("click", vaciarCarrito)
-datosContacto.addEventListener("click", redirigirLinks)
-footer.addEventListener("click",redirigirLinks)
-document.addEventListener("DOMContentLoaded", chequeoCuentaLogeada);
-buttonSalirCuenta.addEventListener("click",salirUsuario)
+  buttonVaciar.addEventListener("click", vaciarCarrito);
+  datosContacto.addEventListener("click", redirigirLinks);
+  footer.addEventListener("click", redirigirLinks);
+  document.addEventListener("DOMContentLoaded", chequeoCuentaLogeada);
+  buttonSalirCuenta.addEventListener("click", salirUsuario);
 
   carritoActualizado();
 };

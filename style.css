@@ -95,6 +95,7 @@ transform: translateX(-525px);
 }
 .hidden {
   display:none;
+  background-color: red;
 }
 
 body {
@@ -106,7 +107,7 @@ body {
   align-items: center;
   justify-content: center;
   display: flex;
-
+border: 1px solid red;
   flex-direction: column;
   text-decoration: none;
 }
@@ -413,6 +414,7 @@ body::-webkit-scrollbar-thumb,
   top: 0px;
   left: 0px;
   border-radius: 5px;
+  transition: all 0.5s ease; 
 }
 
 .contactomain {
@@ -516,13 +518,17 @@ gap: 10px;
 align-items: center;
 justify-content: center;
 }
+.imagenes__producto img:hover{
+  height: 200%;
+  transition: all 0.5s ease; 
+}
 .form__login,
 .form__registro {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
   padding: 50px;
 }
 .form__login input,

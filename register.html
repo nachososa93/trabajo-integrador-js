@@ -26,11 +26,12 @@
         />
      
     
-        <ul class="ulnav ulnav__hidden">
-          <li><a href="#header">Home</a></li>
-          <li><a href="#equipo">Sobre Nosotros</a></li>
-          <li><a href="#productos">Productos</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+        <ul class="ulnav">
+          <li id="home" class="home"><a href="#header" data-href="index.html">Home</a></li>
+          <li id="equipo" class="visible"><a href="#equipo" >Sobre Nosotros</a></li> 
+          <li id="contactonav" class="visible"><a href="#contacto">Contacto</a></li>
+          <li id="productosnav" class="visible"><a href="#productos">Productos</a></li>
+      
         </ul>
         <div class="login">
           <button class="ingreso__button" data-href="login.html">Ingresar</button>
@@ -39,11 +40,11 @@
           <button class="salir__cuenta hidden" data-href="index.html">Cerrar cuenta</button>
           <button class="mi__cuenta hidden">Mi cuenta</button>
         </div>
-<div class="carrito__compras__imagen">
-<img src="./img/carrito-de-compras.png" alt="Carrito de compras">
-<div class="cantidad__carrito__conteiner" >0</div>
-
-</div>
+        <div class="carrito__compras__imagen">
+          <img src="./img/carrito-de-compras.png" alt="Carrito de compras">
+          <div class="cantidad__carrito__conteiner" >0</div>
+          
+          </div>
 <label for="menu" id="menulabel"
 ><img src="./img/menu.png" alt="" id="menu-img"
 /></label>
@@ -97,6 +98,7 @@
       </form>
       <div class="alert"></div>
     </section>
+    <script src="./productos.js"></script>
     <script src="register.js"></script>
   </body>
 </html>
